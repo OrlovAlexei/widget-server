@@ -1,44 +1,59 @@
 import "reflect-metadata";
+import * as express from "express";
 import {buildSchema} from "type-graphql";
-import {ApolloServer} from "apollo-server";
-import {RecipeResolver} from "./recipe/resolver";
+import {ApolloServer} from "apollo-server-express";
 import * as TypeORM from "typeorm";
 import {Container} from "typedi";
-import {Widget} from "./widget/entity";
-import {WidgetResolver} from "./widget/resolver";
+import {customAuthChecker} from "./auth/auth-checker";
+import * as jwt from "express-jwt";
+import {GraphQLSchema} from "graphql";
+import {Request} from "express";
+import {config} from "./config";
+
+export interface IContext {
+    req: Request,
+}
 
 const main = async () => {
     try {
-        await TypeORM.createConnection({
-            type: 'postgres',
-            host: 'localhost',
-            port: 5432,
-            schema: 'public',
-            database: 'widget',
-            username: 'max',
-            password: 'Bankai123',
-            entities: [`${__dirname}/**/entity.ts`],
-            cache: false,
-            synchronize: true,
-        });
+        await TypeORM.createConnection(config.db);
 
-        const schema = await buildSchema({
-            resolvers: [`${__dirname}/**/resolver.ts`],
-            container: Container,
-        });
+        const schema = await buildSchema(config.gqlSchema);
 
-        const apolloServer = new ApolloServer({
-            schema,
-            playground: true,
-        });
-
-        const {url} = await apolloServer.listen(4000);
-
-        // tslint:disable-next-line: no-console
-        console.log(`Server is running, GraphQL Playground available at ${url}`);
+        initServer(schema);
     } catch (e) {
         console.error(e);
     }
+};
+
+const initServer = (schema: GraphQLSchema) => {
+    const app = express();
+    const path = "/";
+
+    const apolloServer = new ApolloServer({
+        schema,
+        playground: true,
+        context: (context) : IContext => {
+            return context;
+        },
+    });
+
+    // Mount a jwt or other authentication middleware that is run before the GraphQL execution
+    app.use(
+        path,
+        jwt({
+            secret: "TypeGraphQL",
+            credentialsRequired: false,
+        }),
+    );
+
+    // Apply the GraphQL server middleware
+    apolloServer.applyMiddleware({ app, path });
+
+    app.listen({port: 4000});
+
+    // tslint:disable-next-line: no-console
+    console.log(`Server is running, GraphQL Playground available at http://localhost:4000`);
 };
 
 main();

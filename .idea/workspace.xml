@@ -1,39 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87ebd346-6b61-4d92-b08a-62ff0cd74153" name="Default Changelist" comment="initial">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/widget-server.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodemon.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/abstract/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/abstract/query.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/answer/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/repo.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/question/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rbac/roles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/rbac/roles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/recipe/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/recipe/inputs.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/recipe/resolver.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/recipe/service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/step/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/user/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/user/service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/consts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/query.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/resolver.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    <list default="true" id="87ebd346-6b61-4d92-b08a-62ff0cd74153" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/auth/auth-checker.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jwt/service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jwt/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbac/roles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/widget/entity.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="286">
               <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -67,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+            <state relative-caret-position="-253">
+              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -77,13 +56,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/recipe/resolver.ts">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#83#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tsconfig.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -91,22 +76,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/widget/resolver.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+            <state relative-caret-position="680">
+              <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
               <folding>
-                <element signature="e#0#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/user/service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
+                <element signature="e#0#89#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/user/entity.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="484">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -124,22 +97,85 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rbac/roles.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="44">
+              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/auth/auth-checker.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/abstract/entity.ts">
+        <entry file="file://$PROJECT_DIR$/node_modules/@types/validator/lib/toInt.d.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+            <state relative-caret-position="22">
+              <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/@types/validator/index.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="258" column="4" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/user/service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
               <folding>
-                <element signature="e#0#47#0" expanded="true" />
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jwt/user.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="693">
+              <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jwt/service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="33">
+              <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,7 +184,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/widget/service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="132">
               <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -184,7 +220,6 @@
         <option value="$PROJECT_DIR$/src/rbac/roles.ts" />
         <option value="$PROJECT_DIR$/src/recipe/service.ts" />
         <option value="$PROJECT_DIR$/src/recipe/exception.ts" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/recipe/inputs.ts" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/nodemon.json" />
@@ -201,13 +236,19 @@
         <option value="$PROJECT_DIR$/src/widget/consts.ts" />
         <option value="$PROJECT_DIR$/src/abstract/query.ts" />
         <option value="$PROJECT_DIR$/src/widget/service.ts" />
-        <option value="$PROJECT_DIR$/src/main.ts" />
         <option value="$PROJECT_DIR$/src/user/service.ts" />
         <option value="$PROJECT_DIR$/src/widget/entity.ts" />
         <option value="$PROJECT_DIR$/src/recipe/resolver.ts" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/widget/resolver.ts" />
         <option value="$PROJECT_DIR$/src/user/entity.ts" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/config.ts" />
+        <option value="$PROJECT_DIR$/src/main.ts" />
+        <option value="$PROJECT_DIR$/src/jwt/user.data.ts" />
+        <option value="$PROJECT_DIR$/src/jwt/user.ts" />
+        <option value="$PROJECT_DIR$/src/jwt/service.ts" />
+        <option value="$PROJECT_DIR$/src/auth/auth-checker.ts" />
       </list>
     </option>
   </component>
@@ -229,7 +270,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -237,10 +277,28 @@
               <item name="widget-server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="widget-server" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
+            <path>
+              <item name="widget-server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="widget-server" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="widget-server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="widget-server" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="auth" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="widget-server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="widget-server" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="jwt" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -350,39 +408,49 @@
       <updated>1580979685612</updated>
       <workItem from="1580979688706" duration="871000" />
       <workItem from="1580980580614" duration="3111000" />
-      <workItem from="1581058862919" duration="8995000" />
+      <workItem from="1581058862919" duration="12944000" />
+      <workItem from="1581076223160" duration="3125000" />
+      <workItem from="1581079438385" duration="5327000" />
     </task>
+    <task id="LOCAL-00001" summary="initial">
+      <created>1581068918869</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581068918869</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12977000" />
+    <option name="totallyTimeSpent" value="25378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1918" y="0" width="1924" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17716116" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Structure" order="6" weight="0.2497332" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32928178" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32890365" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32890365" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39977852" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32928178" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.33001107" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33001107" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Panda Executor" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32890365" />
+      <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -394,6 +462,40 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26040554" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32890365" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32890365" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39977852" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32928178" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33001107" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Panda Executor" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32890365" />
+      <window_info anchor="bottom" id="Messages" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Panda" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -416,6 +518,26 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>schema.extensions</expression-string>
+        <language-id>TypeScript</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>resolverData</expression-string>
+        <language-id>TypeScript</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>resolverData.context</expression-string>
+        <language-id>TypeScript</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>express</expression-string>
+        <language-id>TypeScript</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>this.resolverClasses.find(resolver =&gt; resolver.target === def.target)</expression-string>
         <language-id>JavaScript</language-id>
@@ -454,24 +576,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nodemon.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rbac/roles.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -566,13 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/exception/repo.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -580,16 +681,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/widget/repo.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="54" lean-forward="true" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/widget/repo.ts" />
     <entry file="file://$PROJECT_DIR$/src/widget/consts.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -610,36 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/user/service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/widget/service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/type-graphql/dist/metadata/metadata-storage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -647,40 +709,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/recipe/resolver.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/widget/resolver.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/type-graphql/dist/decorators/ObjectType.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/widget/entity.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -694,20 +726,197 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/user/entity.ts">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/express/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/widget/entity.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/recipe/resolver.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/user/entity.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rbac/roles.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/type-graphql/dist/interfaces/AuthChecker.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="58" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/widget/service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yarn-error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/jsonwebtoken/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-116">
+          <caret line="170" column="16" selection-start-line="170" selection-start-column="16" selection-end-line="170" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/widget/resolver.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typedi/Container.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typedi/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret lean-forward="true" />
+          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-253">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jwt/service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jwt/user.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/user/service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/validator/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="258" column="4" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/validator/lib/toInt.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/auth/auth-checker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

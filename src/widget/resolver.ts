@@ -1,4 +1,4 @@
-import {Arg, Args, FieldResolver, Query, Resolver, Root} from "type-graphql";
+import {Arg, Args, Authorized, FieldResolver, Query, Resolver, Root} from "type-graphql";
 import {EntityNotFoundError} from "../exception/repo";
 import {Widget} from "./entity";
 import {GetList} from "../abstract/query";
@@ -6,6 +6,7 @@ import {WidgetService} from "./service";
 import {Inject} from "typedi";
 import {UserService} from "../user/service";
 import {User} from "../user/entity";
+import {Roles} from "../rbac/roles";
 
 @Resolver(Widget)
 export class WidgetResolver {
@@ -31,6 +32,7 @@ export class WidgetResolver {
         return widget;
     }
 
+    @Authorized([Roles.Admin])
     @Query(() => [Widget])
     async widgets(@Args() {skip, take}: GetList) {
         return await this.widgetService.findAll({skip: skip, take: take});

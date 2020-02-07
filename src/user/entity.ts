@@ -1,6 +1,6 @@
 import {AbstractEntity} from '../abstract/entity';
 import {Column, Entity, Unique} from 'typeorm';
-import {Field, ObjectType} from "type-graphql";
+import {Authorized, Field, ObjectType} from "type-graphql";
 
 @ObjectType()
 @Entity()
@@ -17,6 +17,10 @@ export class User extends AbstractEntity {
     @Field()
     @Column()
     password: string;
+
+    @Authorized()
+    @Column({nullable: true})
+    token?: string;
 
     roles: string[] = ['user'];
 }
