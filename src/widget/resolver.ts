@@ -1,7 +1,7 @@
 import {Arg, Args, Authorized, FieldResolver, Query, Resolver, Root} from "type-graphql";
 import {EntityNotFoundError} from "../exception/repo";
 import {Widget} from "./entity";
-import {GetList} from "../abstract/query";
+import {GetList} from "../abstract/inputs";
 import {WidgetService} from "./service";
 import {Inject} from "typedi";
 import {UserService} from "../user/service";

@@ -3,15 +3,14 @@ import * as express from "express";
 import {buildSchema} from "type-graphql";
 import {ApolloServer} from "apollo-server-express";
 import * as TypeORM from "typeorm";
-import {Container} from "typedi";
-import {customAuthChecker} from "./auth/auth-checker";
 import * as jwt from "express-jwt";
 import {GraphQLSchema} from "graphql";
-import {Request} from "express";
+import {Request, Response} from "express";
 import {config} from "./config";
 
 export interface IContext {
     req: Request,
+    res: Response
 }
 
 const main = async () => {

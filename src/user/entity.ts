@@ -12,13 +12,8 @@ export class User extends AbstractEntity {
 
     @Field()
     @Column()
-    username: string;
-
-    @Field()
-    @Column()
     password: string;
 
-    @Authorized()
     @Column({nullable: true})
     token?: string;
 

@@ -1,6 +1,6 @@
 export class JwtUser {
     constructor(
-        public readonly id: string,
+        public readonly id: number,
         public readonly roles: string[] = []
     ) {
 

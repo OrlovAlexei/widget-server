@@ -6,7 +6,7 @@ import {JwtUser} from "./user";
 export class JwtService {
     private readonly cache: Map<string, JwtUser> = new Map<string, JwtUser>();
 
-    generate(data: JwtUser, secret: string) : string {
+    generate(data: string | object, secret: string) : string {
         return jwt.sign(data, secret);
     }
 

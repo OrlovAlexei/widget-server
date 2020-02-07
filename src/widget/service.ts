@@ -1,7 +1,7 @@
 import {Widget} from "./entity";
 import {getRepository} from "typeorm";
 import {Service} from "typedi";
-import {GetList} from "../abstract/query";
+import {GetList} from "../abstract/inputs";
 
 @Service()
 export class WidgetService {
