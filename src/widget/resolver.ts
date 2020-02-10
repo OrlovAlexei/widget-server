@@ -5,7 +5,7 @@ import {GetList} from "../abstract/inputs";
 import {WidgetService} from "./service";
 import {Inject} from "typedi";
 import {UserService} from "../user/service";
-import {User} from "../user/entity";
+import {User, UserResultType} from "../user/entity";
 import {IContext} from "../main";
 
 @Resolver(Widget)
