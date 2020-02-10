@@ -4,14 +4,13 @@ import {Container} from "typedi";
 import {JwtService} from "../jwt/service";
 import {config} from "../config";
 import {UserService} from "../user/service";
-import toInt = require("validator/lib/toInt");
 import {Roles} from "../rbac/roles";
 
 export const customAuthChecker: AuthChecker<IContext> = async (
     resolverData,
     roles,
 ) => {
-    const token = resolverData.context.req.header('jwt');
+    const token = resolverData.context.req.header('Authorization');
 
     if (!token) {
         return false;
@@ -30,7 +29,7 @@ export const customAuthChecker: AuthChecker<IContext> = async (
     const user = await userService.findOne(userData.id);
 
     if (user.email === "maxim@oprosso.ru") {
-        user.roles.push(Roles.Admin);
+        user.roles.push(Roles.ADMIN);
     }
 
     if (!user) {

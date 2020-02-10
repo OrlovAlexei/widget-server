@@ -19,27 +19,27 @@ export class UserResolver {
     async register(@Arg('regUserData') regUserData: RegUserInput, @Ctx() ctx: IContext) {
         const user = await this.userService.create(regUserData);
 
-        ctx.res.header('jwt', user.token);
+        ctx.res.header('Authorization', `Bearer ${user.token}`);
 
         return user;
     }
 
     @Query(() => User)
-    async auth(@Arg('authUserData') authUserData: AuthUserInput, @Ctx() ctx: IContext) {
-        const user = await this.userService.findByEmail(authUserData.email);
+    async auth(@Arg('authUser') authUser: AuthUserInput, @Ctx() ctx: IContext) {
+        const user = await this.userService.findByEmail(authUser.email);
 
         user.token = this.jwtService.generate({id: user.id, roles: user.roles}, config.jwt.secret);
         this.userService.save(user);
 
         if (!user) {
-            throw new Error("User not found");
+            throw new Error("USER not found");
         }
 
-        if (user.password !== authUserData.password) {
+        if (user.password !== authUser.password) {
             throw new Error("Wrong password");
         }
 
-        ctx.res.header('jwt', user.token);
+        ctx.res.header('Authorization', `Bearer ${user.token}`);
 
         return user;
     }

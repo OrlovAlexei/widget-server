@@ -11,7 +11,7 @@ export class WidgetService {
         return this.widgetRepository.findOne(id);
     }
 
-    findAll(paging: GetList) : Promise<Widget[]> {
+    findAll(userId: number, paging: GetList) : Promise<Widget[]> {
         return this.widgetRepository.find({skip: paging.skip, take: paging.take});
     }
 }

@@ -7,10 +7,15 @@ import * as jwt from "express-jwt";
 import {GraphQLSchema} from "graphql";
 import {Request, Response} from "express";
 import {config} from "./config";
+import {JwtUser} from "./jwt/user";
+import {Container} from "typedi";
+import {JwtService} from "./jwt/service";
+import {Roles} from "./rbac/roles";
 
 export interface IContext {
     req: Request,
-    res: Response
+    res: Response,
+    currentUser: JwtUser
 }
 
 const main = async () => {
@@ -33,7 +38,17 @@ const initServer = (schema: GraphQLSchema) => {
         schema,
         playground: true,
         context: (context) : IContext => {
-            return context;
+            const jwtService = Container.get(JwtService);
+            let jwtUser = jwtService.verify(context.req.header('Authorization'), config.jwt.secret);
+
+            if (jwtUser === false) {
+                jwtUser = new JwtUser(0, [Roles.GUEST]);
+            }
+
+            return {
+                ...context,
+                currentUser: jwtUser
+            };
         },
     });
 
@@ -41,7 +56,7 @@ const initServer = (schema: GraphQLSchema) => {
     app.use(
         path,
         jwt({
-            secret: "TypeGraphQL",
+            secret: config.jwt.secret,
             credentialsRequired: false,
         }),
     );

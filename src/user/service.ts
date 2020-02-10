@@ -4,7 +4,6 @@ import {Inject, Service} from "typedi";
 import {RegUserInput} from "./inputs";
 import {Roles} from "../rbac/roles";
 import {JwtService} from "../jwt/service";
-import {JwtUser} from "../jwt/user";
 import {config} from "../config";
 
 @Service()
@@ -27,7 +26,7 @@ export class UserService {
 
         newUser = await this.repository.save(newUser);
 
-        newUser.roles = [Roles.User];
+        newUser.roles = [Roles.USER];
         newUser.token = this.jwtService.generate({id: newUser.id, roles: newUser.roles}, config.jwt.secret);
 
         return this.repository.save(newUser);
