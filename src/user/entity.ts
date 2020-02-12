@@ -10,7 +10,6 @@ export class User extends AbstractEntity {
     @Column()
     email: string;
 
-    @Field()
     @Column()
     password: string;
 

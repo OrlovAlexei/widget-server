@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="87ebd346-6b61-4d92-b08a-62ff0cd74153" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/resolver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/resolver.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/user/resolver.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+            <state relative-caret-position="572">
+              <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
@@ -63,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/user/entity.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state relative-caret-position="264">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -87,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/widget/resolver.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="746">
+            <state relative-caret-position="682">
               <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="e#0#82#0" expanded="true" />
@@ -165,7 +162,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1918" />
     <option name="width" value="1924" />
     <option name="height" value="1054" />
@@ -176,9 +173,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,7 +291,13 @@
       <workItem from="1581088448389" duration="898000" />
       <workItem from="1581317145041" duration="7344000" />
       <workItem from="1581327690490" duration="3276000" />
-      <workItem from="1581331486738" duration="1265000" />
+      <workItem from="1581331486738" duration="1479000" />
+      <workItem from="1581438139080" duration="1815000" />
+      <workItem from="1581493047668" duration="18000" />
+      <workItem from="1581493150104" duration="16000" />
+      <workItem from="1581493222217" duration="22000" />
+      <workItem from="1581493448945" duration="21000" />
+      <workItem from="1581493592237" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1581068918869</created>
@@ -324,17 +327,23 @@
       <option name="project" value="LOCAL" />
       <updated>1581321541034</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="union result types">
+      <created>1581337144185</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581337144185</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41761000" />
+    <option name="totallyTimeSpent" value="43885000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1918" y="0" width="1924" height="1054" extended-state="6" />
-    <editor active="true" />
+    <frame x="1918" y="0" width="1924" height="1054" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18569905" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19850586" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -343,8 +352,8 @@
       <window_info id="Favorites" order="6" weight="0.32924226" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32890365" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32890365" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39977852" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32890365" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39977852" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -422,19 +431,8 @@
     <MESSAGE value="auth check" />
     <MESSAGE value="user: reg, auth" />
     <MESSAGE value="jwt bearer" />
-    <option name="LAST_COMMIT_MESSAGE" value="jwt bearer" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/user/resolver.ts</url>
-          <line>30</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="union result types" />
+    <option name="LAST_COMMIT_MESSAGE" value="union result types" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -817,6 +815,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/type-graphql/dist/schema/schema-generator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/user/resolver.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -844,16 +859,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/type-graphql/dist/schema/schema-generator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/widget/resolver.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
+        <state relative-caret-position="682">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="e#0#82#0" expanded="true" />
@@ -863,20 +871,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/user/entity.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        <state relative-caret-position="264">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/user/resolver.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
           </folding>
         </state>
       </provider>
