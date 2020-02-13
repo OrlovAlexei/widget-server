@@ -6,6 +6,10 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "lib": ["es2016", "esnext.asynciterable"],
-    "module": "commonjs"
+    "module": "commonjs",
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["."]
+    }
   }
 }
