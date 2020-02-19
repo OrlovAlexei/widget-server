@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87ebd346-6b61-4d92-b08a-62ff0cd74153" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="87ebd346-6b61-4d92-b08a-62ff0cd74153" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/user/entity.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -174,8 +172,8 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,6 +296,7 @@
       <workItem from="1581493222217" duration="22000" />
       <workItem from="1581493448945" duration="21000" />
       <workItem from="1581493592237" duration="18000" />
+      <workItem from="1581929023644" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1581068918869</created>
@@ -338,12 +337,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43885000" />
+    <option name="totallyTimeSpent" value="44484000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1918" y="0" width="1924" height="1054" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19850586" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20064034" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -872,7 +871,7 @@
     <entry file="file://$PROJECT_DIR$/src/user/entity.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

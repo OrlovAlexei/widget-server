@@ -1,11 +1,12 @@
 import {Arg, Ctx, Mutation, Query, Resolver} from "type-graphql";
 import {AuthUserInput, RegUserInput} from "./inputs";
-import {User, UserNotFoundProblem, UserResultType} from "./entity";
+import {User} from "./entity";
 import {UserService} from "./service";
 import {Inject} from "typedi";
 import {JwtService} from "../jwt/service";
 import {IContext} from "../main";
 import {config} from "../config";
+import { UserPayload, UserNotFoundProblem, UserResultType } from "./payload";
 
 @Resolver(User)
 export class UserResolver {
@@ -15,13 +16,14 @@ export class UserResolver {
     @Inject()
     private readonly jwtService: JwtService;
 
-    @Mutation(() => User)
+    @Mutation(() => UserPayload)
     async register(@Arg('regUser') regUser: RegUserInput, @Ctx() ctx: IContext) {
         const user = await this.userService.create(regUser);
+        const userPayload = UserPayload.create(user);
 
         ctx.res.header('Authorization', `Bearer ${user.token}`);
 
-        return user;
+        return userPayload;
     }
 
     @Query(() => UserResultType)
