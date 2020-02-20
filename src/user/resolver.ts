@@ -6,23 +6,12 @@ import { Inject } from "typedi";
 import { JwtService } from "../jwt/service";
 import { IContext } from "../main";
 import { config } from "../config";
-import { UserPayload, UserNotFoundProblem, UserResultType } from "./payload";
-import { UserRoleService } from "../user_role/service";
-import { Roles } from "../rbac/roles";
-import { UserRole } from "../user_role/entity";
-import { Role } from "../role/entity";
-import { RoleService } from "../role/service";
+import { UserPayload, UserNotFoundProblem, UserResultType, WrongPasswordProblem } from "./payload";
 
 @Resolver(User)
 export class UserResolver {
     @Inject()
     private readonly userService: UserService;
-
-    @Inject()
-    private readonly userRoleService: UserRoleService;
-
-    @Inject()
-    private readonly roleService: RoleService;
 
     @Inject()
     private readonly jwtService: JwtService;
@@ -48,13 +37,14 @@ export class UserResolver {
         }
 
         if (user.password !== authUser.password) {
-            throw new Error("Wrong password");
+            const wrongPassword = new WrongPasswordProblem();
+            return wrongPassword;
         }
 
-        if (!user.token) {
-            user.token = this.jwtService.generate({ id: user.id, roles: user.roles }, config.jwt.secret);
-            user = await this.userService.save(user);
-        }
+        user.token = this.jwtService.generate({ id: user.id, roles: user.roles }, config.jwt.secret);
+        user = await this.userService.save(user);
+
+        console.log(this.jwtService.verify(user.token, config.jwt.secret));
 
         ctx.res.header('Authorization', `Bearer ${user.token}`);
 

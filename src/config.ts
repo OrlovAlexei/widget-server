@@ -24,7 +24,7 @@ export const config: IConfig = {
     },
 
     jwt: {
-        secret: 'Hf$1231fse8a'
+        secret: 'Hf$1231fse8aKUHABFLAHlkjvb^$#lsf3241FSikjvxbfxx'
     }
 };
 

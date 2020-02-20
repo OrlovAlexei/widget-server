@@ -7,7 +7,9 @@ export class JwtService {
     private readonly cache: Map<string, JwtUser> = new Map<string, JwtUser>();
 
     generate(data: string | object, secret: string) : string {
-        return jwt.sign(data, secret);
+        return jwt.sign(data, secret, {
+            expiresIn: "1hr"
+        });
     }
 
     verify(token: string, secret: string) : JwtUser | false {
@@ -30,6 +32,7 @@ export class JwtService {
 
             return jwtUser;
         } catch(err) {
+            console.error(err);
             return false;
         }
     }

@@ -3,6 +3,7 @@ import { Roles } from "../rbac/roles";
 import { User } from "./entity";
 import { UserRole } from "../user_role/entity";
 import { Role } from "../role/entity";
+import { Token } from "typedi";
 
 @ObjectType()
 export class UserPayload {
@@ -12,6 +13,7 @@ export class UserPayload {
         instance.id    = user.id;
         instance.email = user.email;
         instance.roles = user.roles;
+        instance.token = user.token;
 
         return instance;
     }
@@ -22,6 +24,9 @@ export class UserPayload {
     @Field()
     email: string;
 
+    @Field()
+    token: string;
+
     @Field(() => [Role])
     roles: Role[] = [];
 }
@@ -30,6 +35,15 @@ export class UserPayload {
 export class UserNotFoundProblem {
     @Field()
     public email: string;
+
+    @Field()
+    public message: string = 'No user with such email address was found.';
+}
+
+@ObjectType()
+export class WrongPasswordProblem {
+    @Field()
+    public message: string = 'Wrong password.';
 }
 
 export const UserResultType = createUnionType({
@@ -39,7 +53,8 @@ export const UserResultType = createUnionType({
 
     types: () => [
         UserPayload,
-        UserNotFoundProblem
+        UserNotFoundProblem,
+        WrongPasswordProblem
     ],
 
     resolveType: value => {
@@ -48,6 +63,8 @@ export const UserResultType = createUnionType({
                 return UserPayload;
             case value instanceof UserNotFoundProblem:
                 return UserNotFoundProblem;
+            case value instanceof WrongPasswordProblem:
+                return WrongPasswordProblem;
             default:
                 return null;
         }

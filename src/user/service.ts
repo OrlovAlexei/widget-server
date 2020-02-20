@@ -37,10 +37,6 @@ export class UserService extends AbstractService<User> {
         return this.repository.save(newUser);
     }
 
-    async save(user: User) {
-        return await this.repository.save(user);
-    }
-
     protected async loadLine(user: User) : Promise<User> {
         const userRoles: UserRole[] = await this.userRoleService.findByUserId(user.id);
 

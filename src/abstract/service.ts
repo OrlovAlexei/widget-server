@@ -1,14 +1,18 @@
 import { AbstractEntity } from "./entity";
-import { Repository, FindOneOptions } from "typeorm";
+import { Repository, FindOneOptions, DeepPartial } from "typeorm";
 
 export abstract class AbstractService<T extends AbstractEntity> {
     protected readonly repository: Repository<T>;
 
     public async findById(id: number | string): Promise<T> {
-        return this.fetchOne({where: {id}});
+        return this.fetchOne({ where: { id } });
     }
 
-    protected async fetchOne(options: FindOneOptions<T>): Promise<T> {
+    async save(entity: DeepPartial<T>): Promise<T> {
+        return await this.repository.save(entity);
+    }
+
+    protected async fetchOne(options: FindOneOptions<T>): Promise<T | undefined> {
         const result = await this.fetch(options);
 
         return result[0];
@@ -26,7 +30,7 @@ export abstract class AbstractService<T extends AbstractEntity> {
         return result;
     }
 
-    protected async loadLine(entity: T) : Promise<T> {
-        return entity
-    } 
+    protected async loadLine(entity: T): Promise<T> {
+        return entity;
+    }
 }

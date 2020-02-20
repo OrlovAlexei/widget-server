@@ -4,31 +4,14 @@ import {Container} from "typedi";
 import {JwtService} from "../jwt/service";
 import {config} from "../config";
 import {UserService} from "../user/service";
-import {Roles} from "../rbac/roles";
 
 export const customAuthChecker: AuthChecker<IContext> = async (
     resolverData,
     roles: string[],
 ) => {
-    const token = resolverData.context.req.header('Authorization');
+    const user = resolverData.context.currentUser;
 
-    if (!token) {
-        return false;
-    }
-
-    const jwtService = Container.get(JwtService);
-
-    const userData = jwtService.verify(token, config.jwt.secret);
-
-    if (userData === false) {
-        return false;
-    }
-
-    const userService = Container.get(UserService);
-
-    const user = await userService.findById(userData.id);
-
-    if (!user) {
+    if (!user || user.id === 0) {
         return false;
     }
 

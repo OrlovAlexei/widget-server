@@ -19,7 +19,7 @@ export class Role extends AbstractEntity {
             from: (value: string) => {
                 for (const enumValue in Roles) {
                     if (Roles[enumValue] === value) {
-                        return enumValue;
+                        return value;
                     }
                 }
 
