@@ -5,10 +5,8 @@ import {GetList} from "../abstract/inputs";
 import {WidgetService} from "./service";
 import {Inject} from "typedi";
 import {UserService} from "../user/service";
-import {User} from "../user/entity";
 import {IContext} from "../main";
 import { UserPayload } from "../user/payload";
-import { Role } from "../role/entity";
 import { Roles } from "../rbac/roles";
 
 @Resolver(Widget)

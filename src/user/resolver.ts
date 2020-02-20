@@ -1,4 +1,4 @@
-import { Arg, Ctx, Mutation, Query, Resolver, FieldResolver, Root } from "type-graphql";
+import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { AuthUserInput, RegUserInput } from "./inputs";
 import { User } from "./entity";
 import { UserService } from "./service";

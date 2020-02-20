@@ -1,8 +1,8 @@
-import {Column, Entity, ManyToOne} from 'typeorm';
+import {Column, Entity} from 'typeorm';
 import {Order} from '../order/entity';
 import {AbstractEntity} from '../abstract/entity';
 import {StepType} from "../step/entity";
-import {Field, ID, ObjectType, Resolver} from "type-graphql";
+import {Field, ID, ObjectType} from "type-graphql";
 
 @Entity()
 @ObjectType()

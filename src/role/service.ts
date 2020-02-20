@@ -1,7 +1,6 @@
 import { Service } from "typedi";
 import { getRepository } from "typeorm";
 import { Role } from "./entity";
-import { Roles } from "../rbac/roles";
 import { AbstractService } from "../abstract/service";
 
 @Service()

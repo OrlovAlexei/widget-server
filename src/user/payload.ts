@@ -1,9 +1,6 @@
 import {createUnionType, Field, ObjectType} from "type-graphql";
-import { Roles } from "../rbac/roles";
 import { User } from "./entity";
-import { UserRole } from "../user_role/entity";
 import { Role } from "../role/entity";
-import { Token } from "typedi";
 
 @ObjectType()
 export class UserPayload {
