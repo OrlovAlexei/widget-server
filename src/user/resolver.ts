@@ -44,8 +44,6 @@ export class UserResolver {
         user.token = this.jwtService.generate({ id: user.id, roles: user.roles }, config.jwt.secret);
         user = await this.userService.save(user);
 
-        console.log(this.jwtService.verify(user.token, config.jwt.secret));
-
         ctx.res.header('Authorization', `Bearer ${user.token}`);
 
         return UserPayload.create(user);
