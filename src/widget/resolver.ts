@@ -8,6 +8,7 @@ import {UserService} from "../user/service";
 import {IContext} from "../main";
 import { UserPayload } from "../user/payload";
 import { Roles } from "../rbac/roles";
+import { WidgetPayload } from "./payload";
 
 @Resolver(Widget)
 export class WidgetResolver {
@@ -23,7 +24,7 @@ export class WidgetResolver {
         return UserPayload.create(user);
     }
 
-    @Query(() => Widget)
+    @Query(() => WidgetPayload)
     async widget(@Arg('id') id: string) {
         const widget = await this.widgetService.findOne(id);
 
@@ -31,12 +32,14 @@ export class WidgetResolver {
             throw new EntityNotFoundError(id);
         }
 
-        return widget;
+        return new WidgetPayload(widget);
     }
 
     @Authorized(Roles.ADMIN, Roles.USER)
-    @Query(() => [Widget])
+    @Query(() => [WidgetPayload])
     async widgets(@Args() input: GetList, @Ctx() ctx: IContext) {
-        return await this.widgetService.findAll(ctx.currentUser.id, input);
+        const widgets = await this.widgetService.findAll(ctx.currentUser.id, input);
+
+        return widgets.map(widget => new WidgetPayload(widget));
     }
 }

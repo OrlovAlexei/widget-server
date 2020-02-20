@@ -1,20 +1,20 @@
-import {Column, Entity} from 'typeorm';
-import {Order} from '../order/entity';
+import {Column, Entity, OneToMany} from 'typeorm';
 import {AbstractEntity} from '../abstract/entity';
-import {StepType} from "../step/entity";
-import {Field, ID, ObjectType} from "type-graphql";
+import {Step} from "../step/entity";
 
 @Entity()
-@ObjectType()
 export class Widget extends AbstractEntity {
-    @Field()
     @Column({length: 300})
     name: string;
 
-    @Field(() => ID)
     @Column()
     userId: number;
 
-    stepsMap: Order<StepType>;
+    @OneToMany(type => Step, step => step.widget, {
+        cascade: false,
+        onDelete: 'RESTRICT',
+        onUpdate: "NO ACTION"
+    })
+    steps: Step[];
 }
 
