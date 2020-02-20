@@ -8,7 +8,7 @@ import {Roles} from "../rbac/roles";
 
 export const customAuthChecker: AuthChecker<IContext> = async (
     resolverData,
-    roles,
+    roles: string[],
 ) => {
     const token = resolverData.context.req.header('Authorization');
 
@@ -26,18 +26,14 @@ export const customAuthChecker: AuthChecker<IContext> = async (
 
     const userService = Container.get(UserService);
 
-    const user = await userService.findOne(userData.id);
-
-    if (user.email === "maxim@oprosso.ru") {
-        user.roles.push(Roles.ADMIN);
-    }
+    const user = await userService.findById(userData.id);
 
     if (!user) {
         return false;
     }
 
-    for (const role of roles) {
-        if (user.roles.indexOf(role) !== -1) {
+    for (const role of user.roles) {
+        if (roles.indexOf(role.name) !== -1) {
             return true;
         }
     }

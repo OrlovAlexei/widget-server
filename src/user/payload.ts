@@ -1,12 +1,15 @@
 import {createUnionType, Field, ObjectType} from "type-graphql";
-import { Roles } from "rbac/roles";
+import { Roles } from "../rbac/roles";
 import { User } from "./entity";
+import { UserRole } from "../user_role/entity";
+import { Role } from "../role/entity";
 
 @ObjectType()
 export class UserPayload {
     public static create(user: User) : UserPayload {
         const instance = new UserPayload();
 
+        instance.id    = user.id;
         instance.email = user.email;
         instance.roles = user.roles;
 
@@ -14,10 +17,13 @@ export class UserPayload {
     }
 
     @Field()
-    email: string;
+    id: number;
 
     @Field()
-    roles: Roles[] = [Roles.USER];
+    email: string;
+
+    @Field(() => [Role])
+    roles: Role[] = [];
 }
 
 @ObjectType()

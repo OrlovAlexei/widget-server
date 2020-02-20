@@ -5,8 +5,9 @@ import {GetList} from "../abstract/inputs";
 import {WidgetService} from "./service";
 import {Inject} from "typedi";
 import {UserService} from "../user/service";
-import {User, UserResultType} from "../user/entity";
+import {User} from "../user/entity";
 import {IContext} from "../main";
+import { UserPayload } from "../user/payload";
 
 @Resolver(Widget)
 export class WidgetResolver {
@@ -16,9 +17,10 @@ export class WidgetResolver {
     @Inject()
     private readonly userService: UserService;
 
-    @FieldResolver(() => User)
+    @FieldResolver(() => UserPayload)
     async owner(@Root() widget: Widget) {
-        return this.userService.findOne(widget.userId);
+        const user = await this.userService.findById(widget.userId);
+        return UserPayload.create(user);
     }
 
     @Query(() => Widget)
