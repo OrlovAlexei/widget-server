@@ -2,16 +2,13 @@ import {Widget} from "./entity";
 import {getRepository} from "typeorm";
 import {Service} from "typedi";
 import {GetList} from "../abstract/inputs";
+import { AbstractService } from "../abstract/service";
 
 @Service()
-export class WidgetService {
-    private readonly widgetRepository = getRepository(Widget);
+export class WidgetService extends AbstractService<Widget> {
+    protected readonly repository = getRepository(Widget);
 
-    findOne(id: string) : Promise<Widget> {
-        return this.widgetRepository.findOne(id);
-    }
-
-    findAll(userId: number, paging: GetList) : Promise<Widget[]> {
-        return this.widgetRepository.find({skip: paging.skip, take: paging.take});
+    findByUserId(userId: number, paging: GetList) : Promise<Widget[]> {
+        return this.fetch({where: {userId}, skip: paging.skip, take: paging.take});
     }
 }

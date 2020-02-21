@@ -8,7 +8,7 @@ export class JwtService {
 
     generate(data: string | object, secret: string) : string {
         return jwt.sign(data, secret, {
-            expiresIn: "1hr"
+            expiresIn: "24hr"
         });
     }
 

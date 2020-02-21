@@ -1,22 +1,19 @@
 import {createUnionType, Field, ObjectType} from "type-graphql";
 import { User } from "./entity";
 import { Role } from "../role/entity";
+import { WidgetPayload } from "../widget/payload";
+import { AbstractPayload } from "../abstract/payload";
 
 @ObjectType()
-export class UserPayload {
-    public static create(user: User) : UserPayload {
-        const instance = new UserPayload();
+export class UserPayload extends AbstractPayload {
+    constructor(user: User) {
+        super(user);
 
-        instance.id    = user.id;
-        instance.email = user.email;
-        instance.roles = user.roles;
-        instance.token = user.token;
-
-        return instance;
+        this.id    = user.id;
+        this.email = user.email;
+        this.roles = user.roles;
+        this.token = user.token;
     }
-
-    @Field()
-    id: number;
 
     @Field()
     email: string;
@@ -30,9 +27,6 @@ export class UserPayload {
 
 @ObjectType()
 export class UserNotFoundProblem {
-    @Field()
-    public email: string;
-
     @Field()
     public message: string = 'No user with such email address was found.';
 }

@@ -8,6 +8,7 @@ import {IContext} from "../main";
 import { UserPayload } from "../user/payload";
 import { Roles } from "../rbac/roles";
 import { WidgetPayload } from "./payload";
+import { StepPayload } from "../step/payload";
 
 @Resolver(WidgetPayload)
 export class WidgetResolver {
@@ -20,12 +21,12 @@ export class WidgetResolver {
     @FieldResolver(() => UserPayload)
     async owner(@Root() widget: WidgetPayload) {
         const user = await this.userService.findById(widget.userId);
-        return UserPayload.create(user);
+        return new UserPayload(user);
     }
 
     @Query(() => WidgetPayload)
     async widget(@Arg('id') id: string) {
-        const widget = await this.widgetService.findOne(id);
+        const widget = await this.widgetService.findById(id);
 
         if (widget === undefined) {
             throw new EntityNotFoundError(id);
@@ -37,8 +38,21 @@ export class WidgetResolver {
     @Authorized(Roles.ADMIN, Roles.USER)
     @Query(() => [WidgetPayload])
     async widgets(@Args() input: GetList, @Ctx() ctx: IContext) {
-        const widgets = await this.widgetService.findAll(ctx.currentUser.id, input);
+        const widgets = await this.widgetService.findByUserId(ctx.currentUser.id, input);
 
         return widgets.map(widget => new WidgetPayload(widget));
+    }
+
+    @FieldResolver(() => [StepPayload])
+    async steps(@Root() widgetPayload: WidgetPayload) {
+        const widget = await this.widgetService.findById(widgetPayload.id, ["steps"]);
+        
+        const stepsPayloads = [];
+        
+        for (const step of widget.steps) {
+            stepsPayloads.push(new StepPayload(step, false));
+        }
+
+        return stepsPayloads;
     }
 }

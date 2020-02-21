@@ -1,10 +1,13 @@
 import { ObjectType, Field, ID } from 'type-graphql';
 import { WidgetPayload } from '../widget/payload';
 import { Step } from './entity';
+import { AbstractPayload } from '../abstract/payload';
 
 @ObjectType()
-export class StepPayload {
+export class StepPayload extends AbstractPayload {
     constructor(step: Step, withWidget: boolean = true) {
+        super(step);
+
         this.widgetId = step.widgetId;
         this.name = step.name;
         this.text = step.text;

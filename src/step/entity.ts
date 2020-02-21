@@ -8,13 +8,12 @@ export enum StepType {
 }
 
 @Entity()
-@TableInheritance({column: {type: 'enum', enum: StepType, name: 'type'}})
 export abstract class Step extends AbstractEntity {
     @Column()
     widgetId: number;
 
     @Column()
-    name: string;
+    name: string; 
 
     @Column()
     text: string;

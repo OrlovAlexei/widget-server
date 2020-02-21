@@ -7,5 +7,8 @@ export class Question extends AbstractEntity {
     stepId: number;
 
     @Column()
+    orderId: number;
+
+    @Column()
     value: string;
 }
