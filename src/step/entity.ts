@@ -1,5 +1,6 @@
-import {Column, Entity, TableInheritance} from 'typeorm';
+import {Column, Entity, TableInheritance, ManyToOne} from 'typeorm';
 import {AbstractEntity} from '../abstract/entity';
+import { Widget } from '../widget/entity';
 
 export enum StepType {
     Question,
@@ -17,4 +18,7 @@ export abstract class Step extends AbstractEntity {
 
     @Column()
     text: string;
+
+    @ManyToOne(type => Widget, widget => widget.steps)
+    widget: Widget;
 }

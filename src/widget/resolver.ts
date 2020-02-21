@@ -1,6 +1,5 @@
 import {Arg, Args, Ctx, FieldResolver, Query, Resolver, Root, Authorized} from "type-graphql";
 import {EntityNotFoundError} from "../exception/repo";
-import {Widget} from "./entity";
 import {GetList} from "../abstract/inputs";
 import {WidgetService} from "./service";
 import {Inject} from "typedi";
@@ -8,8 +7,9 @@ import {UserService} from "../user/service";
 import {IContext} from "../main";
 import { UserPayload } from "../user/payload";
 import { Roles } from "../rbac/roles";
+import { WidgetPayload } from "./payload";
 
-@Resolver(Widget)
+@Resolver(WidgetPayload)
 export class WidgetResolver {
     @Inject()
     private readonly widgetService: WidgetService;
@@ -18,12 +18,12 @@ export class WidgetResolver {
     private readonly userService: UserService;
 
     @FieldResolver(() => UserPayload)
-    async owner(@Root() widget: Widget) {
+    async owner(@Root() widget: WidgetPayload) {
         const user = await this.userService.findById(widget.userId);
         return UserPayload.create(user);
     }
 
-    @Query(() => Widget)
+    @Query(() => WidgetPayload)
     async widget(@Arg('id') id: string) {
         const widget = await this.widgetService.findOne(id);
 
@@ -31,12 +31,14 @@ export class WidgetResolver {
             throw new EntityNotFoundError(id);
         }
 
-        return widget;
+        return new WidgetPayload(widget);
     }
 
     @Authorized(Roles.ADMIN, Roles.USER)
-    @Query(() => [Widget])
+    @Query(() => [WidgetPayload])
     async widgets(@Args() input: GetList, @Ctx() ctx: IContext) {
-        return await this.widgetService.findAll(ctx.currentUser.id, input);
+        const widgets = await this.widgetService.findAll(ctx.currentUser.id, input);
+
+        return widgets.map(widget => new WidgetPayload(widget));
     }
 }

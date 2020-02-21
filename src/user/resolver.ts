@@ -1,6 +1,5 @@
 import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { AuthUserInput, RegUserInput } from "./inputs";
-import { User } from "./entity";
 import { UserService } from "./service";
 import { Inject } from "typedi";
 import { JwtService } from "../jwt/service";
@@ -8,7 +7,7 @@ import { IContext } from "../main";
 import { config } from "../config";
 import { UserPayload, UserNotFoundProblem, UserResultType, WrongPasswordProblem } from "./payload";
 
-@Resolver(User)
+@Resolver(UserPayload)
 export class UserResolver {
     @Inject()
     private readonly userService: UserService;
