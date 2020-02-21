@@ -43,6 +43,12 @@ export class WrongPasswordProblem {
     public message: string = 'Wrong password.';
 }
 
+@ObjectType()
+export class InvalidEmailProblem {
+    @Field()
+    message: string = 'Invalid email format.';
+}
+
 export const UserResultType = createUnionType({
     name: 'UserResultType',
 

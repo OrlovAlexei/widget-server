@@ -1,8 +1,12 @@
 import {Field, InputType} from "type-graphql";
+import { IsEmail } from "class-validator";
 
 @InputType()
 export class RegUserInput {
     @Field()
+    @IsEmail({}, {
+        message: "Invalid email format"
+    })
     email: string;
 
     @Field()
@@ -12,6 +16,9 @@ export class RegUserInput {
 @InputType()
 export class AuthUserInput {
     @Field()
+    @IsEmail({}, {
+        message: "Invalid email format"
+    })
     email: string;
 
     @Field()

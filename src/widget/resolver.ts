@@ -1,6 +1,5 @@
 import {Arg, Args, Ctx, FieldResolver, Query, Resolver, Root, Authorized} from "type-graphql";
 import {EntityNotFoundError} from "../exception/repo";
-import {Widget} from "./entity";
 import {GetList} from "../abstract/inputs";
 import {WidgetService} from "./service";
 import {Inject} from "typedi";
@@ -10,7 +9,7 @@ import { UserPayload } from "../user/payload";
 import { Roles } from "../rbac/roles";
 import { WidgetPayload } from "./payload";
 
-@Resolver(Widget)
+@Resolver(WidgetPayload)
 export class WidgetResolver {
     @Inject()
     private readonly widgetService: WidgetService;
@@ -19,7 +18,7 @@ export class WidgetResolver {
     private readonly userService: UserService;
 
     @FieldResolver(() => UserPayload)
-    async owner(@Root() widget: Widget) {
+    async owner(@Root() widget: WidgetPayload) {
         const user = await this.userService.findById(widget.userId);
         return UserPayload.create(user);
     }

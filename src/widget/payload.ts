@@ -10,7 +10,7 @@ export class WidgetPayload {
         this.userId = widget.userId;
 
 
-        this.steps = widget.steps.map(step => new StepPayload(step, false));
+        this.steps = widget.steps ? widget.steps.map(step => new StepPayload(step, false)) : [];
     }
 
     @Field(() => ID)
@@ -25,4 +25,3 @@ export class WidgetPayload {
     @Field(() => [StepPayload])
     steps: StepPayload[] = [];
 }
-
