@@ -1,10 +1,10 @@
-import {Arg, Args, Ctx, FieldResolver, Query, Resolver, Root, Authorized} from "type-graphql";
-import {EntityNotFoundError} from "../exception/repo";
-import {GetList} from "../abstract/inputs";
-import {WidgetService} from "./service";
-import {Inject} from "typedi";
-import {UserService} from "../user/service";
-import {IContext} from "../main";
+import { Arg, Args, Ctx, FieldResolver, Query, Resolver, Root, Authorized } from "type-graphql";
+import { EntityNotFoundError } from "../exception/repo";
+import { GetList } from "../abstract/inputs";
+import { WidgetService } from "./service";
+import { Inject } from "typedi";
+import { UserService } from "../user/service";
+import { IContext } from "../main";
 import { UserPayload } from "../user/payload";
 import { Roles } from "../rbac/roles";
 import { WidgetPayload } from "./payload";
@@ -46,11 +46,14 @@ export class WidgetResolver {
     @FieldResolver(() => [StepPayload])
     async steps(@Root() widgetPayload: WidgetPayload) {
         const widget = await this.widgetService.findById(widgetPayload.id, ["steps"]);
-        
+
         const stepsPayloads = [];
-        
+
         for (const step of widget.steps) {
-            stepsPayloads.push(new StepPayload(step, false));
+            const stepPayload = new StepPayload(step);
+            stepPayload.widget = widgetPayload;
+
+            stepsPayloads.push(stepPayload);
         }
 
         return stepsPayloads;

@@ -2,19 +2,16 @@ import { ObjectType, Field, ID } from 'type-graphql';
 import { WidgetPayload } from '../widget/payload';
 import { Step } from './entity';
 import { AbstractPayload } from '../abstract/payload';
+import { Widget } from '../widget/entity';
 
 @ObjectType()
 export class StepPayload extends AbstractPayload {
-    constructor(step: Step, withWidget: boolean = true) {
+    constructor(step: Step) {
         super(step);
 
         this.widgetId = step.widgetId;
         this.name = step.name;
         this.text = step.text;
-
-        if (withWidget) {
-            this.widget = new WidgetPayload(step.widget);
-        }
     }
 
     @Field(() => ID)
@@ -26,6 +23,6 @@ export class StepPayload extends AbstractPayload {
     @Field()
     text: string;
 
-    @Field(() => [WidgetPayload])
+    @Field(() => WidgetPayload)
     widget: WidgetPayload;
 }

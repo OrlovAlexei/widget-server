@@ -2,6 +2,7 @@ import {Field, ID, ObjectType} from "type-graphql";
 import { Widget } from './entity';
 import { StepPayload } from "../step/payload";
 import { AbstractPayload } from "../abstract/payload";
+import { Step } from "../step/entity";
 
 @ObjectType()
 export class WidgetPayload extends AbstractPayload {
@@ -11,8 +12,6 @@ export class WidgetPayload extends AbstractPayload {
         this.id = widget.id;
         this.name = widget.name;
         this.userId = widget.userId;
-
-        this.steps = widget.steps?.map(step => new StepPayload(step, false))  || [];
     }
 
     @Field()
