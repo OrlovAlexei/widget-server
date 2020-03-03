@@ -5,10 +5,9 @@ import { Inject } from "typedi";
 import { JwtService } from "../jwt/service";
 import { IContext } from "../main";
 import { config } from "../config";
-import { UserPayload, UserNotFoundProblem, UserResultType, WrongPasswordProblem } from "./payload";
+import { UserPayload, UserNotFoundProblem, UserResultType, WrongPasswordProblem, EmailBusyProblem } from "./payload";
 import { WidgetPayload } from "../widget/payload";
 import { WidgetService } from "../widget/service";
-import { Roles } from "../rbac/roles";
 import { GetList } from "../abstract/inputs";
 
 @Resolver(UserPayload)
@@ -33,9 +32,16 @@ export class UserResolver {
         return new UserPayload(user);
     }
 
-    @Mutation(() => UserPayload)
+    @Mutation(() => UserResultType)
     async register(@Arg('regUser') regUser: RegUserInput, @Ctx() ctx: IContext) {
+        const sameEmailUser = await this.userService.findByEmail(regUser.email);
+
+        if (sameEmailUser !== undefined) {
+            return new EmailBusyProblem();
+        }
+
         const user = await this.userService.create(regUser);
+
         const userPayload = new UserPayload(user);
 
         ctx.res.header('Authorization', `Bearer ${user.token}`);

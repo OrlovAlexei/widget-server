@@ -9,9 +9,13 @@ import { UserPayload } from "../user/payload";
 import { Roles } from "../rbac/roles";
 import { WidgetPayload } from "./payload";
 import { StepPayload } from "../step/payload";
+import { StepService } from "../step/service";
 
 @Resolver(WidgetPayload)
 export class WidgetResolver {
+    @Inject()
+    private readonly stepService: StepService;
+
     @Inject()
     private readonly widgetService: WidgetService;
 
@@ -19,7 +23,7 @@ export class WidgetResolver {
     private readonly userService: UserService;
 
     @FieldResolver(() => UserPayload)
-    async owner(@Root() widget: WidgetPayload) {
+    async user(@Root() widget: WidgetPayload) {
         const user = await this.userService.findById(widget.userId);
         return new UserPayload(user);
     }
@@ -45,17 +49,6 @@ export class WidgetResolver {
 
     @FieldResolver(() => [StepPayload])
     async steps(@Root() widgetPayload: WidgetPayload) {
-        const widget = await this.widgetService.findById(widgetPayload.id, ["steps"]);
-
-        const stepsPayloads = [];
-
-        for (const step of widget.steps) {
-            const stepPayload = new StepPayload(step);
-            stepPayload.widget = widgetPayload;
-
-            stepsPayloads.push(stepPayload);
-        }
-
-        return stepsPayloads;
+        return this.stepService.createPayloads(widgetPayload.id);
     }
 }

@@ -1,5 +1,6 @@
-import {Column, Entity} from 'typeorm';
+import {Column, Entity, ManyToOne} from 'typeorm';
 import {AbstractEntity} from '../abstract/entity';
+import { Step } from '../step/entity';
 
 @Entity()
 export class Question extends AbstractEntity {
@@ -11,4 +12,7 @@ export class Question extends AbstractEntity {
 
     @Column()
     value: string;
+
+    @ManyToOne(type => Step, step => step.questions)
+    step: Step;
 }

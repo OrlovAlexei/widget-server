@@ -23,7 +23,7 @@ export class UserService extends AbstractService<User> {
     @Inject()
     private readonly jwtService: JwtService;
 
-    async findByEmail(email: string) : Promise<User> {
+    async findByEmail(email: string) : Promise<User | undefined> {
         return await this.fetchOne({where: {email}});
     }
 

@@ -1,6 +1,7 @@
-import {Column, Entity, TableInheritance, ManyToOne} from 'typeorm';
+import {Column, Entity, ManyToOne, OneToMany, Index} from 'typeorm';
 import {AbstractEntity} from '../abstract/entity';
 import { Widget } from '../widget/entity';
+import { Question } from '../question/entity';
 
 export enum StepType {
     Question,
@@ -8,6 +9,7 @@ export enum StepType {
 }
 
 @Entity()
+@Index('uidxStepIndex', ['widgetId', 'index'], {unique: true})
 export abstract class Step extends AbstractEntity {
     @Column()
     widgetId: number;
@@ -16,8 +18,18 @@ export abstract class Step extends AbstractEntity {
     name: string; 
 
     @Column()
+    index: number;
+
+    @Column()
     text: string;
 
-    @ManyToOne(type => Widget, widget => widget.steps)
+    @ManyToOne(() => Widget, widget => widget.steps)
     widget: Widget;
+
+    @OneToMany(() => Question, question => question.step, {
+        cascade: false,
+        onDelete: 'RESTRICT',
+        onUpdate: "CASCADE"
+    })
+    questions: Question[];
 }

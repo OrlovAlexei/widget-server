@@ -1,7 +1,6 @@
 import {createUnionType, Field, ObjectType} from "type-graphql";
 import { User } from "./entity";
 import { Role } from "../role/entity";
-import { WidgetPayload } from "../widget/payload";
 import { AbstractPayload } from "../abstract/payload";
 
 @ObjectType()
@@ -38,9 +37,9 @@ export class WrongPasswordProblem {
 }
 
 @ObjectType()
-export class InvalidEmailProblem {
+export class EmailBusyProblem {
     @Field()
-    message: string = 'Invalid email format.';
+    message: string = 'User with such email already exists.';
 }
 
 export const UserResultType = createUnionType({
@@ -51,7 +50,8 @@ export const UserResultType = createUnionType({
     types: () => [
         UserPayload,
         UserNotFoundProblem,
-        WrongPasswordProblem
+        WrongPasswordProblem,
+        EmailBusyProblem
     ],
 
     resolveType: value => {
@@ -62,6 +62,8 @@ export const UserResultType = createUnionType({
                 return UserNotFoundProblem;
             case value instanceof WrongPasswordProblem:
                 return WrongPasswordProblem;
+            case value instanceof EmailBusyProblem:
+                return EmailBusyProblem;
             default:
                 return null;
         }
