@@ -1,79 +1,79 @@
-import { Arg, Ctx, Mutation, Query, Resolver, Authorized, Args, FieldResolver, Root } from "type-graphql";
-import { AuthUserInput, RegUserInput } from "./inputs";
-import { UserService } from "./service";
+import { Arg, Args, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { Inject } from "typedi";
+import { GetList } from "../abstract/inputs";
+import { config } from "../config";
 import { JwtService } from "../jwt/service";
 import { IContext } from "../main";
-import { config } from "../config";
-import { UserPayload, UserNotFoundProblem, UserResultType, WrongPasswordProblem, EmailBusyProblem } from "./payload";
 import { WidgetPayload } from "../widget/payload";
 import { WidgetService } from "../widget/service";
-import { GetList } from "../abstract/inputs";
+import { AuthUserInput, RegUserInput } from "./inputs";
+import { EmailBusyProblem, QueryUserType, UserLoginType, UserNotFoundProblem, UserPayload, WrongPasswordProblem } from "./payload";
+import { UserService } from "./service";
 
 @Resolver(UserPayload)
 export class UserResolver {
-    @Inject()
-    private readonly widgetService: WidgetService;
-    
-    @Inject()
-    private readonly userService: UserService;
+  @Inject()
+  private readonly widgetService: WidgetService;
 
-    @Inject()
-    private readonly jwtService: JwtService;
+  @Inject()
+  private readonly userService: UserService;
 
-    @Query(() => UserResultType)
-    async user(@Arg('id') id: number) {
-        const user = await this.userService.findById(id);
+  @Inject()
+  private readonly jwtService: JwtService;
 
-        if (!user) {
-            return new UserNotFoundProblem();
-        }
+  @Query(() => QueryUserType)
+  async user(@Arg('id') id: number) {
+    const user = await this.userService.findById(id);
 
-        return new UserPayload(user);
+    if (!user) {
+      return new UserNotFoundProblem();
     }
 
-    @Mutation(() => UserResultType)
-    async register(@Arg('regUser') regUser: RegUserInput, @Ctx() ctx: IContext) {
-        const sameEmailUser = await this.userService.findByEmail(regUser.email);
+    return new UserPayload(user);
+  }
 
-        if (sameEmailUser !== undefined) {
-            return new EmailBusyProblem();
-        }
+  @Mutation(() => QueryUserType)
+  async register(@Arg('regUser') regUser: RegUserInput, @Ctx() ctx: IContext) {
+    const sameEmailUser = await this.userService.findByEmail(regUser.email);
 
-        const user = await this.userService.create(regUser);
-
-        const userPayload = new UserPayload(user);
-
-        ctx.res.header('Authorization', `Bearer ${user.token}`);
-
-        return userPayload;
+    if (sameEmailUser !== undefined) {
+      return new EmailBusyProblem();
     }
 
-    @Mutation(() => UserResultType)
-    async auth(@Arg('authUser') authUser: AuthUserInput, @Ctx() ctx: IContext) {
-        let user = await this.userService.findByEmail(authUser.email);
+    const user = await this.userService.create(regUser);
 
-        if (!user) {
-            return new UserNotFoundProblem();
-        }
+    const userPayload = new UserPayload(user);
 
-        if (user.password !== authUser.password) {
-            const wrongPassword = new WrongPasswordProblem();
-            return wrongPassword;
-        }
+    ctx.res.header('Authorization', `Bearer ${user.token}`);
 
-        user.token = this.jwtService.generate({ id: user.id, roles: user.roles }, config.jwt.secret);
-        user = await this.userService.save(user);
+    return userPayload;
+  }
 
-        ctx.res.header('Authorization', `Bearer ${user.token}`);
+  @Mutation(() => UserLoginType)
+  async auth(@Arg('authUser') authUser: AuthUserInput, @Ctx() ctx: IContext) {
+    let user = await this.userService.findByEmail(authUser.email);
 
-        return new UserPayload(user);
+    if (!user) {
+      return new UserNotFoundProblem();
     }
 
-    @FieldResolver(() => [WidgetPayload])
-    async widgets(@Args() input: GetList, @Root() userPayload: UserPayload) {
-        const widgets = await this.widgetService.findByUserId(userPayload.id, input);
-
-        return widgets.map(widget => new WidgetPayload(widget));
+    if (user.password !== authUser.password) {
+      const wrongPassword = new WrongPasswordProblem();
+      return wrongPassword;
     }
+
+    user.token = this.jwtService.generate({ id: user.id, roles: user.roles }, config.jwt.secret);
+    user = await this.userService.save(user);
+
+    ctx.res.header('Authorization', `Bearer ${user.token}`);
+
+    return new UserPayload(user);
+  }
+
+  @FieldResolver(() => [WidgetPayload])
+  async widgets(@Args() input: GetList, @Root() userPayload: UserPayload) {
+    const widgets = await this.widgetService.findByUserId(userPayload.id, input);
+
+    return widgets.map(widget => new WidgetPayload(widget));
+  }
 }
