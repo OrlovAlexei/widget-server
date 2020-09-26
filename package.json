@@ -1,8 +1,7 @@
 {
   "name": "widget-server",
   "scripts": {
-    "start": "ts-node src/main.ts",
-    "start:dev": "nodemon"
+    "start": "nodemon"
   },
   "dependencies": {
     "apollo-server": "^2.18.1",
@@ -10,11 +9,11 @@
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
     "express-jwt": "^5.3.1",
-    "graphql": "^14.1.1",
+    "graphql": "15.3.1",
     "node-env-file": "^0.1.8",
     "pg": "8.3.3",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^0.17.6",
+    "type-graphql": "1.0.0",
     "typedi": "^0.8.0",
     "typeorm": "^0.2.26"
   },

@@ -20,7 +20,6 @@ export interface IContext {
 }
 
 const main = async () => {
-
   try {
     await TypeORM.createConnection(config.db);
 
