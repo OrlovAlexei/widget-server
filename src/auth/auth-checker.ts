@@ -1,8 +1,9 @@
 import { AuthChecker } from 'type-graphql';
 
 import { IContext } from '../main';
+import { Roles } from '../roles/roles';
 
-export const customAuthChecker: AuthChecker<IContext> = (resolverData, roles: string[]) => {
+export const customAuthChecker: AuthChecker<IContext, Roles> = (resolverData, roles: Roles[]) => {
   const user = resolverData.context.currentUser;
 
   if (!user || user.id === 0) {
@@ -10,7 +11,7 @@ export const customAuthChecker: AuthChecker<IContext> = (resolverData, roles: st
   }
 
   for (const role of user.roles) {
-    if (roles.indexOf(role.name) !== -1) {
+    if (roles.includes(role)) {
       return true;
     }
   }

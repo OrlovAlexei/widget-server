@@ -1,9 +1,8 @@
 import { registerEnumType } from 'type-graphql';
 
 export enum Roles {
-  USER = 'user',
-  ADMIN = 'admin',
-  GUEST = 'guest',
+  USER = 2,
+  ADMIN = 3,
 }
 
 registerEnumType(Roles, {

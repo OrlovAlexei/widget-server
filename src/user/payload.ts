@@ -1,7 +1,7 @@
 import { createUnionType, Field, ObjectType } from 'type-graphql';
 
 import { AbstractPayload } from '../abstract/payload';
-import { Role } from '../role/entity';
+import { Roles } from '../roles/roles';
 
 import { User } from './entity';
 
@@ -22,8 +22,8 @@ export class UserPayload extends AbstractPayload {
   @Field()
   token: string;
 
-  @Field(() => [Role])
-  roles: Role[] = [];
+  @Field(() => [Roles])
+  roles: Roles[] = [];
 }
 
 @ObjectType()

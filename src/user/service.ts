@@ -4,10 +4,6 @@ import { getRepository } from 'typeorm';
 import { AbstractService } from '../abstract/service';
 import { config } from '../config';
 import { JwtService } from '../jwt/service';
-import { Role } from '../role/entity';
-import { RoleService } from '../role/service';
-import { UserRole } from '../user_role/entity';
-import { UserRoleService } from '../user_role/service';
 
 import { User } from './entity';
 import { RegUserInput } from './inputs';
@@ -16,11 +12,6 @@ import { RegUserInput } from './inputs';
 export class UserService extends AbstractService<User> {
   protected readonly repository = getRepository(User);
 
-  @Inject()
-  private readonly userRoleService: UserRoleService;
-
-  @Inject()
-  private readonly roleService: RoleService;
 
   @Inject()
   private readonly jwtService: JwtService;
@@ -42,17 +33,17 @@ export class UserService extends AbstractService<User> {
     return this.repository.save(newUser);
   }
 
-  protected async loadLine(user: User): Promise<User> {
-    const userRoles: UserRole[] = await this.userRoleService.findByUserId(user.id);
+  // protected async loadLine(user: User): Promise<User> {
+  //   const userRoles: UserRole[] = await this.userRoleService.findByUserId(user.id);
 
-    const roles: Role[] = [];
+  //   const roles: Role[] = [];
 
-    for (const userRole of userRoles) {
-      roles.push(await this.roleService.findById(userRole.getRoleId()));
-    }
+  //   for (const userRole of userRoles) {
+  //     roles.push(await this.roleService.findById(userRole.getRoleId()));
+  //   }
 
-    user.roles = roles;
+  //   user.roles = roles;
 
-    return user;
-  }
+  //   return user;
+  // }
 }

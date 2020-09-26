@@ -1,10 +1,10 @@
-import { Arg, Args, Authorized,Ctx, FieldResolver, Query, Resolver, Root } from 'type-graphql';
+import { Arg, Args, Authorized, Ctx, FieldResolver, Query, Resolver, Root } from 'type-graphql';
 import { Inject } from 'typedi';
 
 import { GetList } from '../abstract/inputs';
 import { EntityNotFoundError } from '../exception/repo';
 import { IContext } from '../main';
-import { Roles } from '../rbac/roles';
+import { Roles } from '../roles/roles';
 import { StepService } from '../step/service';
 import { UserPayload } from '../user/payload';
 import { UserService } from '../user/service';
