@@ -1,7 +1,8 @@
+import { Field,ObjectType } from 'type-graphql';
+import { Column, Entity } from 'typeorm';
+
 import { AbstractEntity } from '../abstract/entity';
 import { Role } from '../role/entity';
-import { Column, Entity } from 'typeorm';
-import { ObjectType, Field } from 'type-graphql';
 
 @Entity()
 @ObjectType()
@@ -26,7 +27,7 @@ export class UserRole extends AbstractEntity {
     return this.role;
   }
 
-  public setRole(value: Role) {
+  public setRole(value: Role): void {
     this.role = value;
   }
 
@@ -34,7 +35,7 @@ export class UserRole extends AbstractEntity {
     return this.roleId;
   }
 
-  public setRoleId(value: number) {
+  public setRoleId(value: number): void {
     this.roleId = value;
   }
 
@@ -42,7 +43,7 @@ export class UserRole extends AbstractEntity {
     return this.userId;
   }
 
-  public setUserId(value: number) {
+  public setUserId(value: number): void {
     this.userId = value;
   }
 }

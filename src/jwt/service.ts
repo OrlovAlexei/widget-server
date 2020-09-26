@@ -1,12 +1,13 @@
 import * as jwt from 'jsonwebtoken';
 import { Service } from 'typedi';
+
 import { JwtUser } from './user';
 
 @Service()
 export class JwtService {
   private readonly cache: Map<string, JwtUser> = new Map<string, JwtUser>();
 
-  generate(data: string | object, secret: string): string {
+  generate(data: string | Record<string, unknown>, secret: string): string {
     return jwt.sign(data, secret, {
       expiresIn: '24hr',
     });

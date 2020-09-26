@@ -1,7 +1,9 @@
-import * as TypeORM from 'typeorm';
-import { Container } from 'typedi';
-import { customAuthChecker } from './auth/auth-checker';
+import dotenv from 'dotenv'
 import { BuildSchemaOptions } from 'type-graphql';
+import { Container } from 'typedi';
+import * as TypeORM from 'typeorm';
+
+import { customAuthChecker } from './auth/auth-checker';
 
 export interface IConfig {
   db: TypeORM.ConnectionOptions;
@@ -10,7 +12,7 @@ export interface IConfig {
 }
 
 function newConfig(): IConfig {
-  require('dotenv').config();
+  dotenv.config();
   return {
     db: {
       type: 'postgres',

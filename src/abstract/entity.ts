@@ -1,5 +1,6 @@
-import { PrimaryGeneratedColumn } from 'typeorm';
 import { Field, ID, ObjectType } from 'type-graphql';
+import { PrimaryGeneratedColumn } from 'typeorm';
+
 import { IDomainItem } from './interfaces';
 
 @ObjectType()

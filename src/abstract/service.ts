@@ -1,5 +1,6 @@
+import { DeepPartial, FindManyOptions,FindOneOptions, Repository } from 'typeorm';
+
 import { AbstractEntity } from './entity';
-import { Repository, FindOneOptions, DeepPartial, FindManyOptions, RelationOptions } from 'typeorm';
 
 export abstract class AbstractService<T extends AbstractEntity> {
   protected abstract readonly repository: Repository<T>;

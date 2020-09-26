@@ -1,9 +1,11 @@
-import { AbstractService } from '../abstract/service';
-import { Service, Inject } from 'typedi';
-import { Step } from './entity';
+import { Inject,Service } from 'typedi';
 import { getRepository } from 'typeorm';
-import { StepPayload } from './payload';
+
+import { AbstractService } from '../abstract/service';
 import { WidgetService } from '../widget/service';
+
+import { Step } from './entity';
+import { StepPayload } from './payload';
 
 @Service()
 export class StepService extends AbstractService<Step> {

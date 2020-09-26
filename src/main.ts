@@ -1,17 +1,20 @@
 import 'reflect-metadata';
-import * as express from 'express';
-import { buildSchema } from 'type-graphql';
+
 import { ApolloServer } from 'apollo-server-express';
-import * as TypeORM from 'typeorm';
+import * as express from 'express';
+import { Request, Response } from 'express';
 import * as jwt from 'express-jwt';
 import { GraphQLSchema } from 'graphql';
-import { Request, Response } from 'express';
-import { IConfig, config } from './config';
-import { JwtUser } from './jwt/user';
+import { buildSchema } from 'type-graphql';
 import { Container } from 'typedi';
+import * as TypeORM from 'typeorm';
+
 import { JwtService } from './jwt/service';
-import { UserService } from './user/service';
+import { JwtUser } from './jwt/user';
 import { User } from './user/entity';
+import { UserService } from './user/service';
+
+import { config,IConfig } from './config';
 
 export interface IContext {
   req: Request;

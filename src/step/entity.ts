@@ -1,7 +1,8 @@
-import { Column, Entity, ManyToOne, OneToMany, Index } from 'typeorm';
+import { Column, Entity, Index,ManyToOne, OneToMany } from 'typeorm';
+
 import { AbstractEntity } from '../abstract/entity';
-import { Widget } from '../widget/entity';
 import { Question } from '../question/entity';
+import { Widget } from '../widget/entity';
 
 export enum StepType {
   Question,

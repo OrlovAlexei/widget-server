@@ -1,7 +1,9 @@
 import { Field, ID, ObjectType } from 'type-graphql';
-import { Widget } from './entity';
-import { StepPayload } from '../step/payload';
+
 import { AbstractPayload } from '../abstract/payload';
+import { StepPayload } from '../step/payload';
+
+import { Widget } from './entity';
 
 @ObjectType()
 export class WidgetPayload extends AbstractPayload {

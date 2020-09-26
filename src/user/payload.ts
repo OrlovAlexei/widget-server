@@ -1,6 +1,8 @@
 import { createUnionType, Field, ObjectType } from 'type-graphql';
+
 import { AbstractPayload } from '../abstract/payload';
 import { Role } from '../role/entity';
+
 import { User } from './entity';
 
 @ObjectType()
@@ -27,19 +29,19 @@ export class UserPayload extends AbstractPayload {
 @ObjectType()
 export class UserNotFoundProblem {
   @Field()
-  public message: string = 'No user with such email address was found.';
+  public message = 'No user with such email address was found.';
 }
 
 @ObjectType()
 export class WrongPasswordProblem {
   @Field()
-  public message: string = 'Wrong password.';
+  public message = 'Wrong password.';
 }
 
 @ObjectType()
 export class EmailBusyProblem {
   @Field()
-  message: string = 'User with such email already exists.';
+  message = 'User with such email already exists.';
 }
 
 export const UserResultType = createUnionType({

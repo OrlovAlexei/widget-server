@@ -1,7 +1,8 @@
+import { Field, ObjectType } from 'type-graphql';
+import { Column, Entity } from 'typeorm';
+
 import { AbstractEntity } from '../abstract/entity';
-import { Entity, Column } from 'typeorm';
 import { Roles } from '../rbac/roles';
-import { ObjectType, Field } from 'type-graphql';
 
 @Entity()
 @ObjectType()

@@ -1,7 +1,9 @@
 import { Service } from 'typedi';
-import { UserRole } from './entity';
 import { getRepository } from 'typeorm';
+
 import { AbstractService } from '../abstract/service';
+
+import { UserRole } from './entity';
 
 @Service()
 export class UserRoleService extends AbstractService<UserRole> {

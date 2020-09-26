@@ -1,5 +1,6 @@
-import { AbstractEntity } from './entity';
 import { Field, ID, ObjectType } from 'type-graphql';
+
+import { AbstractEntity } from './entity';
 import { IDomainItem } from './interfaces';
 
 @ObjectType()

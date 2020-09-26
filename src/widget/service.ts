@@ -1,8 +1,10 @@
-import { Widget } from './entity';
-import { getRepository } from 'typeorm';
 import { Service } from 'typedi';
+import { getRepository } from 'typeorm';
+
 import { GetList } from '../abstract/inputs';
 import { AbstractService } from '../abstract/service';
+
+import { Widget } from './entity';
 
 @Service()
 export class WidgetService extends AbstractService<Widget> {

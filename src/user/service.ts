@@ -1,14 +1,16 @@
-import { getRepository } from 'typeorm';
-import { User } from './entity';
 import { Inject, Service } from 'typedi';
-import { RegUserInput } from './inputs';
-import { JwtService } from '../jwt/service';
-import { config } from '../config';
+import { getRepository } from 'typeorm';
+
 import { AbstractService } from '../abstract/service';
-import { UserRoleService } from '../user_role/service';
-import { UserRole } from '../user_role/entity';
+import { config } from '../config';
+import { JwtService } from '../jwt/service';
 import { Role } from '../role/entity';
 import { RoleService } from '../role/service';
+import { UserRole } from '../user_role/entity';
+import { UserRoleService } from '../user_role/service';
+
+import { User } from './entity';
+import { RegUserInput } from './inputs';
 
 @Service()
 export class UserService extends AbstractService<User> {

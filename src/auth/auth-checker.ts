@@ -1,4 +1,5 @@
 import { AuthChecker } from 'type-graphql';
+
 import { IContext } from '../main';
 
 export const customAuthChecker: AuthChecker<IContext> = async (resolverData, roles: string[]) => {

@@ -1,15 +1,16 @@
-import { Arg, Args, Ctx, FieldResolver, Query, Resolver, Root, Authorized } from 'type-graphql';
-import { EntityNotFoundError } from '../exception/repo';
-import { GetList } from '../abstract/inputs';
-import { WidgetService } from './service';
+import { Arg, Args, Authorized,Ctx, FieldResolver, Query, Resolver, Root } from 'type-graphql';
 import { Inject } from 'typedi';
-import { UserService } from '../user/service';
+
+import { GetList } from '../abstract/inputs';
+import { EntityNotFoundError } from '../exception/repo';
 import { IContext } from '../main';
-import { UserPayload } from '../user/payload';
 import { Roles } from '../rbac/roles';
-import { WidgetPayload } from './payload';
-import { StepPayload } from '../step/payload';
 import { StepService } from '../step/service';
+import { UserPayload } from '../user/payload';
+import { UserService } from '../user/service';
+
+import { WidgetPayload } from './payload';
+import { WidgetService } from './service';
 
 @Resolver(WidgetPayload)
 export class WidgetResolver {
@@ -23,16 +24,16 @@ export class WidgetResolver {
   private readonly userService: UserService;
 
   @FieldResolver(() => UserPayload)
-  async user(@Root() widget: WidgetPayload) {
+  async user(@Root() widget: WidgetPayload): Promise<UserPayload> {
     const user = await this.userService.findById(widget.userId);
     return new UserPayload(user);
   }
 
   @Query(() => WidgetPayload)
-  async widget(@Arg('id') id: string) {
+  async widget(@Arg('id') id: string): Promise<WidgetPayload | EntityNotFoundError> {
     const widget = await this.widgetService.findById(id);
 
-    if (widget === undefined) {
+    if (widget) {
       throw new EntityNotFoundError(id);
     }
 
@@ -41,14 +42,11 @@ export class WidgetResolver {
 
   @Authorized(Roles.ADMIN, Roles.USER)
   @Query(() => [WidgetPayload])
-  async widgets(@Args() input: GetList, @Ctx() ctx: IContext) {
+  async widgets(@Args() input: GetList, @Ctx() ctx: IContext): Promise<WidgetPayload[]> {
     const widgets = await this.widgetService.findByUserId(ctx.currentUser.id, input);
 
     return widgets.map((widget) => new WidgetPayload(widget));
   }
 
-  @FieldResolver(() => [StepPayload])
-  async steps(@Root() widgetPayload: WidgetPayload) {
-    return this.stepService.createPayloads(widgetPayload.id);
-  }
+
 }

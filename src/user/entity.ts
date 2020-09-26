@@ -1,7 +1,8 @@
-import { AbstractEntity } from '../abstract/entity';
 import { Column, Entity, Unique } from 'typeorm';
-import { Role } from '../role/entity';
+
+import { AbstractEntity } from '../abstract/entity';
 import { Roles } from '../rbac/roles';
+import { Role } from '../role/entity';
 
 @Entity()
 @Unique('uidx_user_email', ['email'])

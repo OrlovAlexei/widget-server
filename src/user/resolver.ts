@@ -1,11 +1,13 @@
 import { Arg, Args, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from 'type-graphql';
 import { Inject } from 'typedi';
+
 import { GetList } from '../abstract/inputs';
 import { config } from '../config';
 import { JwtService } from '../jwt/service';
 import { IContext } from '../main';
 import { WidgetPayload } from '../widget/payload';
 import { WidgetService } from '../widget/service';
+
 import { AuthUserInput, RegUserInput } from './inputs';
 import {
   EmailBusyProblem,
@@ -29,7 +31,7 @@ export class UserResolver {
   private readonly jwtService: JwtService;
 
   @Query(() => QueryUserType)
-  async user(@Arg('id') id: number) {
+  async user(@Arg('id') id: number): Promise<UserPayload | UserNotFoundProblem> {
     const user = await this.userService.findById(id);
 
     if (!user) {
@@ -40,7 +42,7 @@ export class UserResolver {
   }
 
   @Mutation(() => QueryUserType)
-  async register(@Arg('regUser') regUser: RegUserInput, @Ctx() ctx: IContext) {
+  async register(@Arg('regUser') regUser: RegUserInput, @Ctx() ctx: IContext): Promise<UserPayload | EmailBusyProblem> {
     const sameEmailUser = await this.userService.findByEmail(regUser.email);
 
     if (sameEmailUser !== undefined) {
@@ -57,7 +59,7 @@ export class UserResolver {
   }
 
   @Mutation(() => UserLoginType)
-  async auth(@Arg('authUser') authUser: AuthUserInput, @Ctx() ctx: IContext) {
+  async auth(@Arg('authUser') authUser: AuthUserInput, @Ctx() ctx: IContext): Promise<UserPayload | WrongPasswordProblem | UserNotFoundProblem> {
     let user = await this.userService.findByEmail(authUser.email);
 
     if (!user) {
@@ -78,7 +80,7 @@ export class UserResolver {
   }
 
   @FieldResolver(() => [WidgetPayload])
-  async widgets(@Args() input: GetList, @Root() userPayload: UserPayload) {
+  async widgets(@Args() input: GetList, @Root() userPayload: UserPayload): Promise<WidgetPayload[]> {
     const widgets = await this.widgetService.findByUserId(userPayload.id, input);
 
     return widgets.map((widget) => new WidgetPayload(widget));

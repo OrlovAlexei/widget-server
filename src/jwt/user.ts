@@ -1,5 +1,5 @@
-import { Role } from '../role/entity';
 import { Roles } from '../rbac/roles';
+import { Role } from '../role/entity';
 
 export class JwtUser {
   constructor(
