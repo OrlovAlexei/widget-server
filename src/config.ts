@@ -1,35 +1,44 @@
 import * as TypeORM from "typeorm";
-import {Container} from "typedi";
-import {customAuthChecker} from "./auth/auth-checker";
-import {BuildSchemaOptions} from "type-graphql";
+import { Container } from "typedi";
+import { customAuthChecker } from "./auth/auth-checker";
+import { BuildSchemaOptions } from "type-graphql";
 
-export const config: IConfig = {
+export interface IConfig {
+  db: TypeORM.ConnectionOptions,
+  gqlSchema: BuildSchemaOptions,
+  jwt: { secret: string }
+}
+
+function newConfig(): IConfig {
+  require('dotenv').config()
+  return {
+
     db: {
-        type: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        schema: 'public',
-        database: 'widget',
-        username: 'max',
-        password: 'Bankai123',
-        entities: [`${__dirname}/**/entity.ts`],
-        cache: false,
-        synchronize: true,
+      type: 'postgres',
+      host: process.env.WIDGET_DB_HOST,
+      port: 5432,
+      schema: 'public',
+      database: process.env.WIDGET_DB_DATABASE,
+      username: process.env.WIDGET_DB_USERNAME,
+      password: process.env.WIDGET_DB_PASS,
+      entities: [`${__dirname}/**/entity.ts`],
+      cache: false,
+      synchronize: true,
     },
 
     gqlSchema: {
-        resolvers: [`${__dirname}/**/resolver.ts`],
-        container: Container,
-        authChecker: customAuthChecker
+      resolvers: [`${__dirname}/**/resolver.ts`],
+      container: Container,
+      authChecker: customAuthChecker,
     },
 
     jwt: {
-        secret: 'Hf$1231fse8aKUHABFLAHlkjvb^$#lsf3241FSikjvxbfxx'
+      secret: process.env.WIDGET_JWT_SECRET
     }
+
+  }
 };
 
-export interface IConfig {
-    db: TypeORM.ConnectionOptions,
-    gqlSchema: BuildSchemaOptions,
-    jwt: any
-}
+export const config = newConfig()
+
+
