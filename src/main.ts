@@ -14,7 +14,7 @@ import { JwtUser } from './jwt/user';
 import { User } from './user/entity';
 import { UserService } from './user/service';
 
-import { config,IConfig } from './config';
+import { config, IConfig } from './config';
 
 export interface IContext {
   req: Request;
@@ -52,7 +52,7 @@ const initServer = (schema: GraphQLSchema, config: IConfig) => {
         jwtUser = jwtService.verify(token.split(' ')[1], config.jwt.secret);
       }
 
-      let user;
+      let user: User;
 
       if (jwtUser === false) {
         user = new User();
@@ -71,11 +71,14 @@ const initServer = (schema: GraphQLSchema, config: IConfig) => {
   // Mount a jwt or other authentication middleware that is run before the GraphQL execution
   app.use(
     path,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     jwt({
       secret: config.jwt.secret,
       credentialsRequired: false,
     }),
   );
+
+
 
   // Apply the GraphQL server middleware
   apolloServer.applyMiddleware({ app, path });
@@ -86,4 +89,5 @@ const initServer = (schema: GraphQLSchema, config: IConfig) => {
   console.log(`Server is running, GraphQL Playground available at http://localhost:4000`);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 main();

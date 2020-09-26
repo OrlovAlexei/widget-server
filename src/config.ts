@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'
+import * as dotenv from 'dotenv'
 import { BuildSchemaOptions } from 'type-graphql';
 import { Container } from 'typedi';
 import * as TypeORM from 'typeorm';

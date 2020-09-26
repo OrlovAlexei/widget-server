@@ -1,4 +1,4 @@
-import { Inject,Service } from 'typedi';
+import { Inject, Service } from 'typedi';
 import { getRepository } from 'typeorm';
 
 import { AbstractService } from '../abstract/service';
@@ -17,7 +17,7 @@ export class StepService extends AbstractService<Step> {
   public async createPayloads(widgetId: number): Promise<StepPayload[]> {
     const widget = await this.widgetService.findById(widgetId, ['steps']);
 
-    const stepsPayloads = [];
+    const stepsPayloads: StepPayload[] = [];
 
     for (const step of widget.steps) {
       const stepPayload = new StepPayload(step);

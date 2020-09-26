@@ -28,19 +28,19 @@ export class UserPayload extends AbstractPayload {
 
 @ObjectType()
 export class UserNotFoundProblem {
-  @Field()
+  @Field(() => String)
   public message = 'No user with such email address was found.';
 }
 
 @ObjectType()
 export class WrongPasswordProblem {
-  @Field()
+  @Field(() => String)
   public message = 'Wrong password.';
 }
 
 @ObjectType()
 export class EmailBusyProblem {
-  @Field()
+  @Field(() => String)
   message = 'User with such email already exists.';
 }
 

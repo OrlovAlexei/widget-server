@@ -1,4 +1,4 @@
-import { DeepPartial, FindManyOptions,FindOneOptions, Repository } from 'typeorm';
+import { DeepPartial, FindManyOptions, FindOneOptions, Repository } from 'typeorm';
 
 import { AbstractEntity } from './entity';
 
@@ -36,6 +36,6 @@ export abstract class AbstractService<T extends AbstractEntity> {
   }
 
   protected async loadLine(entity: T): Promise<T> {
-    return entity;
+    return await new Promise(() => entity)
   }
 }
