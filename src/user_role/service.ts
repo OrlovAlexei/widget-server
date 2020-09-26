@@ -1,19 +1,19 @@
-import { Service } from "typedi";
-import { UserRole } from "./entity";
-import { getRepository } from "typeorm";
-import { AbstractService } from "../abstract/service";
+import { Service } from 'typedi';
+import { UserRole } from './entity';
+import { getRepository } from 'typeorm';
+import { AbstractService } from '../abstract/service';
 
 @Service()
 export class UserRoleService extends AbstractService<UserRole> {
-    protected readonly repository = getRepository(UserRole);
-    
-    create(userId: number, roleId: number): UserRole {
-        const userRole = new UserRole(userId, roleId);
+  protected readonly repository = getRepository(UserRole);
 
-        return this.repository.create(userRole);
-    }
+  create(userId: number, roleId: number): UserRole {
+    const userRole = new UserRole(userId, roleId);
 
-    async findByUserId(userId: number): Promise<UserRole[]> {
-        return await this.fetch({where: {userId}});
-    }
+    return this.repository.create(userRole);
+  }
+
+  async findByUserId(userId: number): Promise<UserRole[]> {
+    return await this.fetch({ where: { userId } });
+  }
 }

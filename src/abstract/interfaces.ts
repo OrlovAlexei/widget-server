@@ -1,3 +1,3 @@
 export interface IDomainItem {
-    id: number;
+  id: number;
 }

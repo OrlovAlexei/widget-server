@@ -1,22 +1,22 @@
-import "reflect-metadata";
-import * as express from "express";
-import { buildSchema } from "type-graphql";
-import { ApolloServer } from "apollo-server-express";
-import * as TypeORM from "typeorm";
-import * as jwt from "express-jwt";
-import { GraphQLSchema } from "graphql";
-import { Request, Response } from "express";
-import { IConfig, config } from "./config";
-import { JwtUser } from "./jwt/user";
-import { Container } from "typedi";
-import { JwtService } from "./jwt/service";
-import { UserService } from "./user/service";
-import { User } from "./user/entity";
+import 'reflect-metadata';
+import * as express from 'express';
+import { buildSchema } from 'type-graphql';
+import { ApolloServer } from 'apollo-server-express';
+import * as TypeORM from 'typeorm';
+import * as jwt from 'express-jwt';
+import { GraphQLSchema } from 'graphql';
+import { Request, Response } from 'express';
+import { IConfig, config } from './config';
+import { JwtUser } from './jwt/user';
+import { Container } from 'typedi';
+import { JwtService } from './jwt/service';
+import { UserService } from './user/service';
+import { User } from './user/entity';
 
 export interface IContext {
-  req: Request,
-  res: Response,
-  currentUser: User
+  req: Request;
+  res: Response;
+  currentUser: User;
 }
 
 const main = async () => {
@@ -33,7 +33,7 @@ const main = async () => {
 
 const initServer = (schema: GraphQLSchema, config: IConfig) => {
   const app = express();
-  const path = "/";
+  const path = '/';
 
   const apolloServer = new ApolloServer({
     schema,
@@ -55,12 +55,12 @@ const initServer = (schema: GraphQLSchema, config: IConfig) => {
         user = new User();
       } else {
         const userService = Container.get(UserService);
-        user = await userService.findById(jwtUser.id)
+        user = await userService.findById(jwtUser.id);
       }
 
       return {
         ...context,
-        currentUser: user
+        currentUser: user,
       };
     },
   });

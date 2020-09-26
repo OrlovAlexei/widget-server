@@ -1,18 +1,17 @@
-import * as TypeORM from "typeorm";
-import { Container } from "typedi";
-import { customAuthChecker } from "./auth/auth-checker";
-import { BuildSchemaOptions } from "type-graphql";
+import * as TypeORM from 'typeorm';
+import { Container } from 'typedi';
+import { customAuthChecker } from './auth/auth-checker';
+import { BuildSchemaOptions } from 'type-graphql';
 
 export interface IConfig {
-  db: TypeORM.ConnectionOptions,
-  gqlSchema: BuildSchemaOptions,
-  jwt: { secret: string }
+  db: TypeORM.ConnectionOptions;
+  gqlSchema: BuildSchemaOptions;
+  jwt: { secret: string };
 }
 
 function newConfig(): IConfig {
-  require('dotenv').config()
+  require('dotenv').config();
   return {
-
     db: {
       type: 'postgres',
       host: process.env.WIDGET_DB_HOST,
@@ -33,12 +32,9 @@ function newConfig(): IConfig {
     },
 
     jwt: {
-      secret: process.env.WIDGET_JWT_SECRET
-    }
+      secret: process.env.WIDGET_JWT_SECRET,
+    },
+  };
+}
 
-  }
-};
-
-export const config = newConfig()
-
-
+export const config = newConfig();

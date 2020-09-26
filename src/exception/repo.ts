@@ -1,8 +1,8 @@
 export class EntityNotFoundError extends Error {
-    text: string;
+  text: string;
 
-    constructor(id: string) {
-        super();
-        this.text = `Recipe Not Found: ${id}`;
-    }
+  constructor(id: string) {
+    super();
+    this.text = `Recipe Not Found: ${id}`;
+  }
 }

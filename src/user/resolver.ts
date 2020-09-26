@@ -1,14 +1,21 @@
-import { Arg, Args, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
-import { Inject } from "typedi";
-import { GetList } from "../abstract/inputs";
-import { config } from "../config";
-import { JwtService } from "../jwt/service";
-import { IContext } from "../main";
-import { WidgetPayload } from "../widget/payload";
-import { WidgetService } from "../widget/service";
-import { AuthUserInput, RegUserInput } from "./inputs";
-import { EmailBusyProblem, QueryUserType, UserLoginType, UserNotFoundProblem, UserPayload, WrongPasswordProblem } from "./payload";
-import { UserService } from "./service";
+import { Arg, Args, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from 'type-graphql';
+import { Inject } from 'typedi';
+import { GetList } from '../abstract/inputs';
+import { config } from '../config';
+import { JwtService } from '../jwt/service';
+import { IContext } from '../main';
+import { WidgetPayload } from '../widget/payload';
+import { WidgetService } from '../widget/service';
+import { AuthUserInput, RegUserInput } from './inputs';
+import {
+  EmailBusyProblem,
+  QueryUserType,
+  UserLoginType,
+  UserNotFoundProblem,
+  UserPayload,
+  WrongPasswordProblem,
+} from './payload';
+import { UserService } from './service';
 
 @Resolver(UserPayload)
 export class UserResolver {
@@ -74,6 +81,6 @@ export class UserResolver {
   async widgets(@Args() input: GetList, @Root() userPayload: UserPayload) {
     const widgets = await this.widgetService.findByUserId(userPayload.id, input);
 
-    return widgets.map(widget => new WidgetPayload(widget));
+    return widgets.map((widget) => new WidgetPayload(widget));
   }
 }

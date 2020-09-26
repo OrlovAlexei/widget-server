@@ -1,39 +1,39 @@
 import * as jwt from 'jsonwebtoken';
-import {Service} from "typedi";
-import {JwtUser} from "./user";
+import { Service } from 'typedi';
+import { JwtUser } from './user';
 
 @Service()
 export class JwtService {
-    private readonly cache: Map<string, JwtUser> = new Map<string, JwtUser>();
+  private readonly cache: Map<string, JwtUser> = new Map<string, JwtUser>();
 
-    generate(data: string | object, secret: string) : string {
-        return jwt.sign(data, secret, {
-            expiresIn: "24hr"
-        });
+  generate(data: string | object, secret: string): string {
+    return jwt.sign(data, secret, {
+      expiresIn: '24hr',
+    });
+  }
+
+  verify(token: string, secret: string): JwtUser | false {
+    const cached = this.cache.get(token);
+
+    if (cached !== undefined) {
+      return cached;
     }
 
-    verify(token: string, secret: string) : JwtUser | false {
-        const cached = this.cache.get(token);
+    try {
+      const decoded = jwt.verify(token, secret);
 
-        if (cached !== undefined) {
-            return cached;
-        }
+      if (!decoded || typeof decoded !== 'object') {
+        throw new Error('Invalid jwt data');
+      }
 
-        try {
-            const decoded = jwt.verify(token, secret);
+      const jwtUser = new JwtUser(decoded['id'], decoded['roles']);
 
-            if (!decoded || typeof decoded !== "object") {
-                throw new Error("Invalid jwt data");
-            }
+      this.cache.set(token, jwtUser);
 
-            const jwtUser = new JwtUser(decoded['id'], decoded['roles']);
-
-            this.cache.set(token, jwtUser);
-
-            return jwtUser;
-        } catch(err) {
-            console.error(err);
-            return false;
-        }
+      return jwtUser;
+    } catch (err) {
+      console.error(err);
+      return false;
     }
+  }
 }

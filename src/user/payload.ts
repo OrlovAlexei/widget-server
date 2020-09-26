@@ -1,7 +1,7 @@
-import { createUnionType, Field, ObjectType } from "type-graphql";
-import { AbstractPayload } from "../abstract/payload";
-import { Role } from "../role/entity";
-import { User } from "./entity";
+import { createUnionType, Field, ObjectType } from 'type-graphql';
+import { AbstractPayload } from '../abstract/payload';
+import { Role } from '../role/entity';
+import { User } from './entity';
 
 @ObjectType()
 export class UserPayload extends AbstractPayload {
@@ -47,14 +47,9 @@ export const UserResultType = createUnionType({
 
   description: 'User or problems',
 
-  types: () => [
-    UserPayload,
-    UserNotFoundProblem,
-    WrongPasswordProblem,
-    EmailBusyProblem
-  ],
+  types: () => [UserPayload, UserNotFoundProblem, WrongPasswordProblem, EmailBusyProblem],
 
-  resolveType: value => {
+  resolveType: (value) => {
     switch (true) {
       case value instanceof UserPayload:
         return UserPayload;
@@ -67,7 +62,7 @@ export const UserResultType = createUnionType({
       default:
         return null;
     }
-  }
+  },
 });
 
 export const QueryUserType = createUnionType({
@@ -75,12 +70,9 @@ export const QueryUserType = createUnionType({
 
   description: 'User or problems witch query',
 
-  types: () => [
-    UserPayload,
-    UserNotFoundProblem
-  ],
+  types: () => [UserPayload, UserNotFoundProblem],
 
-  resolveType: value => {
+  resolveType: (value) => {
     switch (true) {
       case value instanceof UserPayload:
         return UserPayload;
@@ -89,21 +81,17 @@ export const QueryUserType = createUnionType({
       default:
         return null;
     }
-  }
+  },
 });
-
 
 export const UserRegisterType = createUnionType({
   name: 'UserRegisterType',
 
   description: 'User or problems witch registration',
 
-  types: () => [
-    UserPayload,
-    EmailBusyProblem
-  ],
+  types: () => [UserPayload, EmailBusyProblem],
 
-  resolveType: value => {
+  resolveType: (value) => {
     switch (true) {
       case value instanceof UserPayload:
         return UserPayload;
@@ -112,7 +100,7 @@ export const UserRegisterType = createUnionType({
       default:
         return null;
     }
-  }
+  },
 });
 
 export const UserLoginType = createUnionType({
@@ -120,13 +108,9 @@ export const UserLoginType = createUnionType({
 
   description: 'User or problems witch login',
 
-  types: () => [
-    UserPayload,
-    UserNotFoundProblem,
-    WrongPasswordProblem,
-  ],
+  types: () => [UserPayload, UserNotFoundProblem, WrongPasswordProblem],
 
-  resolveType: value => {
+  resolveType: (value) => {
     switch (true) {
       case value instanceof UserPayload:
         return UserPayload;
@@ -137,5 +121,5 @@ export const UserLoginType = createUnionType({
       default:
         return null;
     }
-  }
+  },
 });
