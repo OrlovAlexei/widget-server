@@ -10,10 +10,8 @@ export const customAuthChecker: AuthChecker<IContext, Roles> = (resolverData, ro
     return false;
   }
 
-  for (const role of user.roles) {
-    if (roles.includes(role)) {
-      return true;
-    }
+  if (roles.includes(user.role)) {
+    return true;
   }
 
   return false;

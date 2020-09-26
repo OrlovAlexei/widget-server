@@ -17,8 +17,8 @@ export class RegUserInput {
   @Field()
   password: string;
 
-  @Field(() => [Roles])
-  roles: Roles[];
+  @Field(() => Roles)
+  roles: Roles;
 }
 
 @InputType()

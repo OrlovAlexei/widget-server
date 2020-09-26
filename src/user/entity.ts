@@ -15,6 +15,6 @@ export class User extends AbstractEntity {
   @Column({ nullable: true })
   token?: string;
 
-  @Column("int", { array: true })
-  roles: Roles[] = [];
+  @Column({ default: Roles.USER })
+  role: Roles;
 }

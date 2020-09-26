@@ -10,7 +10,7 @@ import { Widget } from './entity';
 export class WidgetService extends AbstractService<Widget> {
   protected readonly repository = getRepository(Widget);
 
-  findByUserId(userId: number, paging: GetList): Promise<Widget[]> {
-    return this.fetch({ where: { userId }, skip: paging.skip, take: paging.take });
+  async findByUserId(userId: number, paging: GetList): Promise<Widget[]> {
+    return await this.find({ where: { userId }, ...paging });
   }
 }

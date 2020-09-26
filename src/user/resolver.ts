@@ -44,11 +44,12 @@ export class UserResolver {
   @Mutation(() => QueryUserType)
   async register(@Arg('regUser') regUser: RegUserInput, @Ctx() ctx: IContext): Promise<UserPayload | EmailBusyProblem> {
     const sameEmailUser = await this.userService.findByEmail(regUser.email);
+    console.log(sameEmailUser)
 
     if (sameEmailUser !== undefined) {
       return new EmailBusyProblem();
     }
-
+    console.log("save")
     const user = await this.userService.create(regUser);
 
     const userPayload = new UserPayload(user);
@@ -71,7 +72,7 @@ export class UserResolver {
       return wrongPassword;
     }
 
-    user.token = this.jwtService.generate({ id: user.id, roles: user.roles }, config.jwt.secret);
+    user.token = this.jwtService.generate({ id: user.id, roles: user.role }, config.jwt.secret);
     user = await this.userService.save(user);
 
     ctx.res.header('Authorization', `Bearer ${user.token}`);
