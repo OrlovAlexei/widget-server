@@ -37,8 +37,8 @@ export class WidgetResolver {
   }
 
   @FieldResolver(() => [StepPayload])
-  async steps(@Root() widget: WidgetPayload): Promise<StepPayload[]> {
-    return await this.stepService.find({ where: { widgetId: widget.id } })
+  async steps(@Args() navigation: ListNavigation, @Root() widget: WidgetPayload): Promise<StepPayload[]> {
+    return await this.stepService.find({ where: { widgetId: widget.id }, ...navigation })
   }
 
   @Query(() => QueryWidgetType)
