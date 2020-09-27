@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql';
+import { createUnionType, Field, ID, ObjectType } from 'type-graphql';
 
 import { AbstractPayload } from '../abstract/payload';
 import { StepPayload } from '../step/payload';
@@ -25,3 +25,26 @@ export class WidgetPayload extends AbstractPayload {
   @Field(() => [StepPayload])
   steps: StepPayload[];
 }
+
+
+@ObjectType()
+export class WidgetNotFoundProblem {
+  @Field(() => String)
+  message = "No widget with such id was found";
+}
+
+
+export const QueryWidgetType = createUnionType({
+  name: "QueryWidgetPayload",
+  description: "Widget or problems witch query",
+  types: () => [WidgetPayload, WidgetNotFoundProblem],
+  resolveType: (value) => {
+    switch (true) {
+      case value instanceof WidgetPayload:
+        return WidgetPayload
+      case value instanceof WidgetNotFoundProblem:
+        return WidgetNotFoundProblem
+    }
+  }
+
+})

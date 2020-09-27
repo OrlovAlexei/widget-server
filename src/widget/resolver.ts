@@ -11,7 +11,7 @@ import { UserPayload } from '../user/payload';
 import { UserService } from '../user/service';
 
 import { NewWidgetInput } from './inputs';
-import { WidgetPayload } from './payload';
+import { QueryWidgetType, WidgetNotFoundProblem, WidgetPayload } from './payload';
 import { WidgetService } from './service';
 
 @Resolver(WidgetPayload)
@@ -31,12 +31,12 @@ export class WidgetResolver {
     return new UserPayload(user);
   }
 
-  @Query(() => WidgetPayload)
-  async widget(@Arg('id') id: number): Promise<WidgetPayload | EntityNotFoundError> {
+  @Query(() => QueryWidgetType)
+  async widget(@Arg('id') id: number): Promise<WidgetPayload | WidgetNotFoundProblem> {
     const widget = await this.widgetService.findById(id);
 
-    if (widget) {
-      throw new EntityNotFoundError(id);
+    if (!widget) {
+      throw new WidgetNotFoundProblem();
     }
 
     return new WidgetPayload(widget);
