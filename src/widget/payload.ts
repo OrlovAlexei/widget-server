@@ -1,7 +1,6 @@
 import { createUnionType, Field, ID, ObjectType } from 'type-graphql';
 
 import { AbstractPayload } from '../abstract/payload';
-import { StepPayload } from '../step/payload';
 
 import { Widget } from './entity';
 
@@ -13,7 +12,6 @@ export class WidgetPayload extends AbstractPayload {
     this.id = widget.id;
     this.name = widget.name;
     this.userId = widget.userId;
-    this.steps = widget.steps
   }
 
   @Field()
@@ -22,8 +20,6 @@ export class WidgetPayload extends AbstractPayload {
   @Field(() => ID)
   userId: number;
 
-  @Field(() => [StepPayload])
-  steps: StepPayload[];
 }
 
 
