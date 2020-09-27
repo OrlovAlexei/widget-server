@@ -2,7 +2,7 @@ import { Max, Min } from 'class-validator';
 import { ArgsType, Field, Int } from 'type-graphql';
 
 @ArgsType()
-export class GetList {
+export class ListNavigation {
   @Field(() => Int)
   @Min(0)
   skip = 0;

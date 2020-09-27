@@ -4,7 +4,7 @@ import { Field, InputType } from 'type-graphql';
 import { Roles } from '../roles/roles';
 
 @InputType()
-export class RegUserInput {
+export class NewUserInput {
   @Field()
   @IsEmail(
     {},
@@ -22,7 +22,7 @@ export class RegUserInput {
 }
 
 @InputType()
-export class AuthUserInput {
+export class LoginUserInput {
   @Field()
   @IsEmail(
     {},

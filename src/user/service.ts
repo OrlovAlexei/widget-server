@@ -6,7 +6,7 @@ import { config } from '../config';
 import { JwtService } from '../jwt/service';
 
 import { User } from './entity';
-import { RegUserInput } from './inputs';
+import { NewUserInput } from './inputs';
 
 @Service()
 export class UserService extends AbstractService<User> {
@@ -20,7 +20,7 @@ export class UserService extends AbstractService<User> {
     return await this.findOne({ where: { email } });
   }
 
-  async create(regUserInput: RegUserInput): Promise<User> {
+  async create(regUserInput: NewUserInput): Promise<User> {
     const newUser = this.repository.create(regUserInput);
 
 

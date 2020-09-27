@@ -1,7 +1,7 @@
 import { Arg, Args, Authorized, Ctx, FieldResolver, Query, Resolver, Root } from 'type-graphql';
 import { Inject } from 'typedi';
 
-import { GetList } from '../abstract/inputs';
+import { ListNavigation } from '../abstract/inputs';
 import { EntityNotFoundError } from '../exception/repo';
 import { IContext } from '../main';
 import { Roles } from '../roles/roles';
@@ -42,7 +42,7 @@ export class WidgetResolver {
 
   @Authorized(Roles.ADMIN, Roles.USER)
   @Query(() => [WidgetPayload])
-  async widgets(@Args() input: GetList, @Ctx() ctx: IContext): Promise<WidgetPayload[]> {
+  async widgets(@Args() input: ListNavigation, @Ctx() ctx: IContext): Promise<WidgetPayload[]> {
     const widgets = await this.widgetService.findByUserId(ctx.currentUser.id, input);
 
     return widgets.map((widget) => new WidgetPayload(widget));

@@ -1,7 +1,7 @@
 import { Service } from 'typedi';
 import { getRepository } from 'typeorm';
 
-import { GetList } from '../abstract/inputs';
+import { ListNavigation } from '../abstract/inputs';
 import { AbstractService } from '../abstract/service';
 
 import { Widget } from './entity';
@@ -10,7 +10,7 @@ import { Widget } from './entity';
 export class WidgetService extends AbstractService<Widget> {
   protected readonly repository = getRepository(Widget);
 
-  async findByUserId(userId: number, paging: GetList): Promise<Widget[]> {
+  async findByUserId(userId: number, paging: ListNavigation): Promise<Widget[]> {
     return await this.find({ where: { userId }, ...paging });
   }
 }
