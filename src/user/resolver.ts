@@ -44,7 +44,6 @@ export class UserResolver {
   @Mutation(() => QueryUserType)
   async newUser(@Arg('input') input: NewUserInput, @Ctx() ctx: IContext): Promise<UserPayload | EmailBusyProblem> {
     const sameEmailUser = await this.userService.findByEmail(input.email);
-    console.log(sameEmailUser)
 
     if (sameEmailUser !== undefined) {
       return new EmailBusyProblem();

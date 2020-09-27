@@ -13,6 +13,7 @@ export class WidgetPayload extends AbstractPayload {
     this.id = widget.id;
     this.name = widget.name;
     this.userId = widget.userId;
+    this.steps = widget.steps
   }
 
   @Field()
@@ -22,5 +23,5 @@ export class WidgetPayload extends AbstractPayload {
   userId: number;
 
   @Field(() => [StepPayload])
-  steps: StepPayload[] = [];
+  steps: StepPayload[];
 }

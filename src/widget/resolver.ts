@@ -1,14 +1,16 @@
-import { Arg, Args, Authorized, Ctx, FieldResolver, Query, Resolver, Root } from 'type-graphql';
+import { Arg, Args, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from 'type-graphql';
 import { Inject } from 'typedi';
 
 import { ListNavigation } from '../abstract/inputs';
 import { EntityNotFoundError } from '../exception/repo';
 import { IContext } from '../main';
 import { Roles } from '../roles/roles';
+import { Step } from '../step/entity';
 import { StepService } from '../step/service';
 import { UserPayload } from '../user/payload';
 import { UserService } from '../user/service';
 
+import { NewWidgetInput } from './inputs';
 import { WidgetPayload } from './payload';
 import { WidgetService } from './service';
 
@@ -30,7 +32,7 @@ export class WidgetResolver {
   }
 
   @Query(() => WidgetPayload)
-  async widget(@Arg('id') id: string): Promise<WidgetPayload | EntityNotFoundError> {
+  async widget(@Arg('id') id: number): Promise<WidgetPayload | EntityNotFoundError> {
     const widget = await this.widgetService.findById(id);
 
     if (widget) {
@@ -48,5 +50,18 @@ export class WidgetResolver {
     return widgets.map((widget) => new WidgetPayload(widget));
   }
 
+  @Authorized(Roles.ADMIN, Roles.USER)
+  @Mutation(() => WidgetPayload)
+  async newWidget(@Arg("input") input: NewWidgetInput, @Ctx() ctx: IContext): Promise<WidgetPayload> {
+    const newWidget = await this.widgetService.create({ ...input, userId: ctx.currentUser.id })
+
+    let steps: Step[] = []
+
+    if (input.hasStep) {
+      steps = await Promise.all(input.steps.map(async (st, index) => await this.stepService.save({ ...st, index, widgetId: newWidget.id })))
+    }
+
+    return new WidgetPayload({ ...newWidget, steps })
+  }
 
 }

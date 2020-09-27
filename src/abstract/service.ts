@@ -21,6 +21,4 @@ export abstract class AbstractService<T extends AbstractEntity> {
     return await this.repository.save(entity);
   }
 
-
-
 }
