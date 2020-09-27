@@ -1,8 +1,7 @@
-import { Arg, Args, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from 'type-graphql';
+import { Arg, Args, Authorized, Ctx, FieldResolver, Int, Mutation, Query, Resolver, Root } from 'type-graphql';
 import { Inject } from 'typedi';
 
 import { ListNavigation } from '../abstract/inputs';
-import { EntityNotFoundError } from '../exception/repo';
 import { IContext } from '../main';
 import { Roles } from '../roles/roles';
 import { Step } from '../step/entity';
@@ -29,6 +28,11 @@ export class WidgetResolver {
   async user(@Root() widget: WidgetPayload): Promise<UserPayload> {
     const user = await this.userService.findById(widget.userId);
     return new UserPayload(user);
+  }
+
+  @FieldResolver(() => Int)
+  async stepsCount(@Root() widget: WidgetPayload): Promise<number> {
+    return this.stepService.getCountSteps(widget.id)
   }
 
   @Query(() => QueryWidgetType)

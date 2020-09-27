@@ -18,4 +18,8 @@ export class StepService extends AbstractService<Step> {
     const newStep = this.repository.create(step)
     return await this.repository.save(newStep)
   }
+
+  async getCountSteps(widgetId: number): Promise<number> {
+    return await this.repository.count({ where: { widgetId } })
+  }
 }

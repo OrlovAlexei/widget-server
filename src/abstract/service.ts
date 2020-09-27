@@ -14,7 +14,6 @@ export abstract class AbstractService<T extends AbstractEntity> {
   }
 
   public async findById(id: number | string, relations: string[] = []): Promise<T> {
-    console.log("findById", id)
     return await this.findOne({ where: { id }, relations });
   }
 
