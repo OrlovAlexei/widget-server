@@ -5,6 +5,7 @@ import { ListNavigation } from '../abstract/inputs';
 import { IContext } from '../main';
 import { Roles } from '../roles/roles';
 import { Step } from '../step/entity';
+import { StepPayload } from '../step/payload';
 import { StepService } from '../step/service';
 import { UserPayload } from '../user/payload';
 import { UserService } from '../user/service';
@@ -33,6 +34,11 @@ export class WidgetResolver {
   @FieldResolver(() => Int)
   async stepsCount(@Root() widget: WidgetPayload): Promise<number> {
     return this.stepService.getCountSteps(widget.id)
+  }
+
+  @FieldResolver(() => [StepPayload])
+  async steps(@Root() widget: WidgetPayload): Promise<StepPayload[]> {
+    return await this.stepService.find({ where: { widgetId: widget.id } })
   }
 
   @Query(() => QueryWidgetType)
