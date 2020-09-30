@@ -74,4 +74,10 @@ export class WidgetResolver {
     return new WidgetPayload({ ...newWidget, steps })
   }
 
+  @Authorized(Roles.ADMIN, Roles.USER)
+  @Mutation(() => WidgetPayload)
+  async pinWidget(@Arg("id") id: number, @Arg("pinned") pinned: boolean): Promise<WidgetPayload> {
+    const updatedWidget = await this.widgetService.update(id, { pinned })
+    return new WidgetPayload(updatedWidget)
+  }
 }
