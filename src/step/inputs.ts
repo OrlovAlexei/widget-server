@@ -1,8 +1,10 @@
-import { Field, InputType } from "type-graphql";
+import { Field, ID, InputType } from "type-graphql";
 
 
 @InputType()
-export class StepInput {
+export class NewStepInput {
+  @Field(() => ID)
+  widgetId: number;
 
   @Field()
   name: string
