@@ -11,6 +11,9 @@ export class Widget extends AbstractEntity {
   @Column()
   userId: number;
 
+  @Column({ default: false })
+  pinned: boolean;
+
   @OneToMany(() => Step, (step) => step.widget, {
     cascade: false,
     onDelete: 'RESTRICT',

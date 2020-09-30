@@ -12,6 +12,7 @@ export class WidgetPayload extends AbstractPayload {
     this.id = widget.id;
     this.name = widget.name;
     this.userId = widget.userId;
+    this.pinned = widget.pinned
   }
 
   @Field()
@@ -20,6 +21,8 @@ export class WidgetPayload extends AbstractPayload {
   @Field(() => ID)
   userId: number;
 
+  @Field(() => Boolean)
+  pinned: boolean;
 }
 
 
