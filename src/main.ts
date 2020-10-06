@@ -22,6 +22,7 @@ export interface IContext {
   currentUser: User;
 }
 
+
 const main = async () => {
   try {
     await TypeORM.createConnection(config.db);
